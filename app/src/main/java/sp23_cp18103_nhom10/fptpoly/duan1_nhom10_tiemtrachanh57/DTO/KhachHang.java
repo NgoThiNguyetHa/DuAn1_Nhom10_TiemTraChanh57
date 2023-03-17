@@ -1,6 +1,6 @@
 package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO;
 
-public class khachHang {
+public class KhachHang {
     private int maKH;
     private String hoTen;
     private String sdt;
@@ -47,7 +47,7 @@ public class khachHang {
         this.gioiTinh = gioiTinh;
     }
 
-    public khachHang(int maKH, String hoTen, String sdt, String namSinh, int gioiTinh) {
+    public KhachHang(int maKH, String hoTen, String sdt, String namSinh, int gioiTinh) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.sdt = sdt;
@@ -55,6 +55,6 @@ public class khachHang {
         this.gioiTinh = gioiTinh;
     }
 
-    public khachHang() {
+    public KhachHang() {
     }
 }
