@@ -23,15 +23,15 @@ public class LoaiDAO {
     public long insertLoai(Loai obj){
         ContentValues values = new ContentValues();
         values.put("tenLoai", obj.getTenLoai());
-        return db.insert("Loai", null, values);
+        return db.insert("loai", null, values);
     }
     public int updateLoai(Loai obj){
         ContentValues values = new ContentValues();
         values.put("tenLoai", obj.getTenLoai());
-        return db.update("Loai", values, "maLoai=?",new String[]{obj.getMaLoai()+""});
+        return db.update("loai", values, "maLoai=?",new String[]{obj.getMaLoai()+""});
     }
     public int deleteLoai(String id){
-        return db.delete("Loai", "maLoai=?",new String[]{id});
+        return db.delete("loai", "maLoai=?",new String[]{id});
     }
 
     @SuppressLint("Range")
@@ -48,12 +48,12 @@ public class LoaiDAO {
     }
 
     public List<Loai> getAll(){
-        String sql = "select * from Loai";
+        String sql = "select * from loai";
         return getData(sql);
     }
 
     public Loai getID(String id){
-        String sql = "select * from Loai where maLoai=?";
+        String sql = "select * from loai where maLoai=?";
         List<Loai> list = getData(sql,id);
         return list.get(0);
     }

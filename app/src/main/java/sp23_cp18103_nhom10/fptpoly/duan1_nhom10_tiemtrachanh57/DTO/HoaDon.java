@@ -2,11 +2,25 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO;
 
 import java.util.Date;
 
-public class hoaDon {
+public class HoaDon {
     private int maHD;
     private int maKH;
     private int maNV;
     private int soLuong;
+    private int tongTien;
+
+    public HoaDon(int tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public int getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(int tongTien) {
+        this.tongTien = tongTien;
+    }
+
     private int trangThai;
     private String tenKH;
     private Date ngayXuat;
@@ -67,7 +81,7 @@ public class hoaDon {
         this.ngayXuat = ngayXuat;
     }
 
-    public hoaDon(int maHD, int maKH, int maNV, int soLuong, int trangThai, String tenKH, Date ngayXuat) {
+    public HoaDon(int maHD, int maKH, int maNV, int soLuong, int trangThai, String tenKH, Date ngayXuat) {
         this.maHD = maHD;
         this.maKH = maKH;
         this.maNV = maNV;
@@ -77,6 +91,6 @@ public class hoaDon {
         this.ngayXuat = ngayXuat;
     }
 
-    public hoaDon() {
+    public HoaDon() {
     }
 }

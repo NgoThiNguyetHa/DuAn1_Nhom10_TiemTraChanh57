@@ -24,6 +24,7 @@ public class DoUongDAO {
         ContentValues values = new ContentValues();
         values.put("maLoai", obj.getMaLoai());
         values.put("tenDoUong", obj.getTenDoUong());
+        values.put("giaTien", obj.getGiaTien());
         values.put("size", obj.getSize());
         values.put("trangThai", obj.getTrangThai());
         return db.insert("doUong", null, values);
@@ -32,6 +33,7 @@ public class DoUongDAO {
         ContentValues values = new ContentValues();
         values.put("maLoai", obj.getMaLoai());
         values.put("tenDoUong", obj.getTenDoUong());
+        values.put("giaTien", obj.getGiaTien());
         values.put("size", obj.getSize());
         values.put("trangThai", obj.getTrangThai());
         return db.update("doUong", values, "maDoUong=?", new String[]{obj.getMaDoUong()+""});
@@ -49,6 +51,7 @@ public class DoUongDAO {
             obj.setMaDoUong(Integer.parseInt(c.getString(c.getColumnIndex("maDoUong"))));
             obj.setMaLoai(Integer.parseInt(c.getString(c.getColumnIndex("maLoai"))));
             obj.setTenDoUong(c.getString(c.getColumnIndex("tenDoUong")));
+            obj.setGiaTien(Integer.parseInt(c.getString(c.getColumnIndex("giaTien"))));
             obj.setSize(c.getString(c.getColumnIndex("size")));
             obj.setTrangThai(Integer.parseInt(c.getString(c.getColumnIndex("trangThai"))));
             list.add(obj);
