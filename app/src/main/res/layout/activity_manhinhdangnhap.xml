@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".manhinhdangnhap"
+    android:orientation="vertical"
+    android:background="@drawable/chao">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:textStyle="bold"
+        android:text="ĐĂNG NHẬP"
+        android:layout_gravity="center"
+        android:layout_marginTop="240dp"
+        android:textColor="@color/black"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:startIconDrawable="@drawable/ic_baseline_phone_in_talk_24"
+            android:layout_marginTop="50dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edSDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFCC3E"
+                android:hint="Số điện thoại"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPasswordT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFCC3E"
+            android:hint="Mật khẩu"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu mật khẩu"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFCC3E"
+        android:text="Đăng nhập"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
