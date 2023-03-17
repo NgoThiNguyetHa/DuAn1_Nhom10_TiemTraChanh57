@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/chao">
+
+    <TextView
+        android:id="@+id/tvThongKe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:textStyle="bold"
+        android:text="THỐNG KÊ"
+        android:layout_gravity="center"
+        android:layout_marginTop="240dp"
+        android:textColor="@color/black"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edChonChiNhanh"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="#FFCC3E"
+            android:hint="Chọn chi nhánh"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_gravity="center"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edTuNgay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFCC3E"
+            android:hint="Từ ngày"
+            android:textSize="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edDenNgay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFCC3E"
+            android:hint="Đến ngày"
+            android:textSize="20dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Doanh thu"
+        android:textColor="@color/black"
+        android:textSize="43dp"
+        android:textStyle="bold"
+        android:layout_marginRight="80dp"/>
+
+</LinearLayout>
