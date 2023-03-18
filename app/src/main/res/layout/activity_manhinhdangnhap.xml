@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".manhinhdangnhap"
+    tools:context=".ManHinhDangNhap"
     android:orientation="vertical"
     android:background="@drawable/chao">
 
@@ -15,9 +15,8 @@
         android:textStyle="bold"
         android:text="ĐĂNG NHẬP"
         android:layout_gravity="center"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="180dp"
         android:textColor="@color/black"/>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -25,17 +24,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             app:startIconDrawable="@drawable/ic_baseline_phone_in_talk_24"
-            android:layout_marginTop="50dp">
-
-
+            android:layout_marginTop="20dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edSDT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFCC3E"
-                android:hint="Số điện thoại"
-
-                />
+                android:hint="Số điện thoại"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -44,28 +39,29 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPasswordT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFCC3E"
-            android:hint="Mật khẩu"
-
-            />
+            android:hint="Mật khẩu"/>
     </com.google.android.material.textfield.TextInputLayout>
+
     <CheckBox
+        android:id="@+id/ckLuuMatKhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lưu mật khẩu"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        />
 
     <Button
+        android:id="@+id/btnDangNhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -73,18 +69,6 @@
         android:text="Đăng nhập"
         android:textColor="@color/black"
         android:textStyle="bold"
-
         />
-
-
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>
