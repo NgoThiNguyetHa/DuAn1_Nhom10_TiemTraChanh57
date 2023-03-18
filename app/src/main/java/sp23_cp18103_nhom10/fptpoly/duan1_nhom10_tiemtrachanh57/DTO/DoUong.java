@@ -4,8 +4,21 @@ public class DoUong {
     private int maDoUong;
     private int maLoai;
     private String tenDoUong;
+    private int giaTien;
     private String size;
     private int trangThai;
+
+    public DoUong(int giaTien) {
+        this.giaTien = giaTien;
+    }
+
+    public int getGiaTien() {
+        return giaTien;
+    }
+
+    public void setGiaTien(int giaTien) {
+        this.giaTien = giaTien;
+    }
 
     public int getMaDoUong() {
         return maDoUong;

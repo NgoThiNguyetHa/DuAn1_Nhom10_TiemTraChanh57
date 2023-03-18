@@ -15,19 +15,21 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tableLoai = "create table Loai(maLoai integer primary key autoincrement," +
+        String tableLoai = "create table loai(maLoai integer primary key autoincrement," +
                 "tenLoai text not null)";
         sqLiteDatabase.execSQL(tableLoai);
 
         String tableDoUong = "create table doUong(maDoUong integer primary key autoincrement ," +
-                "maLoai integer references Loai(maLoai)," +
+                "maLoai integer references loai(maLoai)," +
                 "tenDoUong text not null," +
+                "giaTien integer not null,"+
                 "size text not null," +
                 "trangThai integer not null)";
         sqLiteDatabase.execSQL(tableDoUong);
 
         String tableDatDoUong = "create table datDoUong(maDatDoUong integer primary key autoincrement," +
                 "maDoUong integer references doUong(maDoUong)," +
+                "tongTien integer not null,"+
                 "maHD integer not null," +
                 "soLuong integer not null)";
         sqLiteDatabase.execSQL(tableDatDoUong);
@@ -45,7 +47,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 "soLuong integer not null," +
                 "trangThai integer not null," +
                 "tenKH text not null," +
-                "ngayXuat date not null)";
+                "ngayXuat date not null," +
+                "tongTien integer not null)";
+                ;
         sqLiteDatabase.execSQL(tableHoaDon);
 
         String tableNhanVien = "create table nhanVien(maNV integer primary key autoincrement ," +
