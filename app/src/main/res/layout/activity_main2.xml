@@ -187,7 +187,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround4"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
