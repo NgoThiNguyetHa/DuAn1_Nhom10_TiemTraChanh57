@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    private String mSDT="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         bar.setHomeAsUpIndicator(R.drawable.ic_menu);
         bar.setDisplayHomeAsUpEnabled(true);
 
+        Intent intent = getIntent();
+        String sdt = intent.getStringExtra("user");
+
         FragmentManager manager = getSupportFragmentManager();
-        MainActivity2 mainActivity2 = new MainActivity2();
+        HomeFragment mainActivity2 = new HomeFragment();
         manager.beginTransaction().replace(R.id.flContent, mainActivity2).commit();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -45,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FragmentManager manager = getSupportFragmentManager();
                 switch (item.getItemId()){
+                    case R.id.navHome:
+                        setTitle("Tiệm trà chanh 57");
+                        HomeFragment mainActivity2 = new HomeFragment();
+                        manager.beginTransaction().replace(R.id.flContent, mainActivity2).commit();
+                        break;
                     case R.id.navNhanVien:
                         setTitle("Quản lý nhân viên");
                         QuanLyNhanVienFragment quanLyNhanVienFragment = new QuanLyNhanVienFragment();
@@ -77,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void getSDT(){
+        Intent intent = getIntent();
+        String sdt = intent.getStringExtra("user");
+        HomeFragment mainActivity2 = new HomeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("sdt", sdt);
+        mainActivity2.setArguments(bundle);
+
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+
+        manager.replace(R.id.flContent, mainActivity2).commit();
+
     }
 
 }

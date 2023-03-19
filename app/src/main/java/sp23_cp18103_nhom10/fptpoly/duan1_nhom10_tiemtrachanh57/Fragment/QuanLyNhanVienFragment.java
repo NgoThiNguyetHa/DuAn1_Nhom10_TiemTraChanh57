@@ -106,55 +106,55 @@ public class QuanLyNhanVienFragment extends Fragment {
             if (item.getTrangThai() == 1) {
                 chkTrangThai.setChecked(true);
             } else {
-                chkTrangThai.setChecked(true);
+                chkTrangThai.setChecked(false);
             }
-            btnHuyNhanVien.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        }
+        btnHuyNhanVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btnLuuNhanVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item = new NhanVien();
+                item.setHoTen(edHoTen.getText().toString());
+                item.setMatKhau(edMatKhau.getText().toString());
+                item.setNamSinh(edNamSinh.getText().toString());
+                item.setSdt(edSDT.getText().toString());
+                if (rdoNam.isChecked()) {
+                    item.setGioiTinh(1);
+                } else {
+                    item.setGioiTinh(0);
+                }
+                if (chkTrangThai.isChecked()) {
+                    item.setTrangThai(1);
+                } else {
+                    item.setTrangThai(0);
+                }
+                if (validate() > 0) {
+                    if (type == 0) {
+                        if (dao.insertNhanVien(item) > 0) {
+                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        item.setMaNV(Integer.parseInt(edMaNV.getText().toString()));
+                        if (dao.updateNhanVien(item) > 0) {
+                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Sửa không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    capNhapLv();
                     dialog.dismiss();
                 }
-            });
-            btnLuuNhanVien.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    item = new NhanVien();
-                    item.setHoTen(edHoTen.getText().toString());
-                    item.setMatKhau(edMatKhau.getText().toString());
-                    item.setNamSinh(edNamSinh.getText().toString());
-                    item.setSdt(edSDT.getText().toString());
-                    if (rdoNam.isChecked()) {
-                        item.setGioiTinh(1);
-                    } else {
-                        item.setGioiTinh(0);
-                    }
-                    if (chkTrangThai.isChecked()) {
-                        item.setTrangThai(1);
-                    } else {
-                        item.setTrangThai(0);
-                    }
-                    if (validate() > 0) {
-                        if (type == 0) {
-                            if (dao.insertNhanVien(item) > 0) {
-                                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            item.setMaNV(Integer.parseInt(edMaNV.getText().toString()));
-                            if (dao.updateNhanVien(item) > 0) {
-                                Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, "Sửa không thành công", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        capNhapLv();
-                        dialog.dismiss();
-                    }
-                }
+            }
 
-            });
-            dialog.show();
-        }
+        });
+        dialog.show();
     }
     void capNhapLv(){
         list = (ArrayList<NhanVien>) dao.getAll();

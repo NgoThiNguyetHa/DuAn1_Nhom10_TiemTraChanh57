@@ -23,7 +23,7 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
     private Context context;
     QuanLyNhanVienFragment fragment;
     private ArrayList<NhanVien> list;
-    TextView tvHoTen , tvSDT , tvNamSinh , tvGioiTinh , tvMatKhau , tvTrangThai;
+    TextView tvHoTen , tvSDT , tvNamSinh , tvGioiTinh , tvMaNV , tvTrangThai;
     ImageView img;
     public AdapterQuanLyNhanVien(@NonNull Context context, QuanLyNhanVienFragment fragment, ArrayList<NhanVien> list) {
         super(context, 0 , list);
@@ -50,14 +50,13 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
             tvSDT = view.findViewById(R.id.tvSDT);
             tvNamSinh = view.findViewById(R.id.tvNamSinh);
             tvGioiTinh = view.findViewById(R.id.tvGioiTinh);
-            tvMatKhau = view.findViewById(R.id.tvMatKhau);
+            tvMaNV = view.findViewById(R.id.tvMaNV);
             tvTrangThai = view.findViewById(R.id.tvTrangThai);
-            img = view.findViewById(R.id.imgUpdateNhanVien);
 
             tvHoTen.setText("Họ tên : " + item.getHoTen());
             tvSDT.setText("Số điện thoại : " + item.getSdt());
             tvNamSinh.setText("Năm sinh : " + item.getNamSinh());
-            tvMatKhau.setText("Mật khảu : " + item.getMatKhau());
+            tvMaNV.setText("Mã nhân viên : " + item.getMaNV());
 
             if(item.getTrangThai() == 1){
                 tvTrangThai.setText("Đi làm");
@@ -72,7 +71,6 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
             }else{
                 tvGioiTinh.setText("Giới tính : Nữ " );
             }
-                img = view.findViewById(R.id.imgUpdateNhanVien);
 
         }
 
