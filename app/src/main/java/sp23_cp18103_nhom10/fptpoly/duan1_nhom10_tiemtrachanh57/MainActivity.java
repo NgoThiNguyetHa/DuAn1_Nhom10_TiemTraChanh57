@@ -1,9 +1,23 @@
 package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -11,26 +25,62 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.Categorie
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.Loai;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView.Adapter adapter;
-    RecyclerView rycCategories, rycPopular;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rycCategories = findViewById(R.id.rycCategories);
-        rycPopular = findViewById(R.id.rycPopular);
+        Context context = this;
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.navigationView);
+        drawerLayout = findViewById(R.id.drawerLayout);
+
+        setSupportActionBar(toolbar);
+        ActionBar bar = getSupportActionBar();
+        bar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        bar.setDisplayHomeAsUpEnabled(true);
+
+        FragmentManager manager = getSupportFragmentManager();
+        MainActivity2 mainActivity2 = new MainActivity2();
+        manager.beginTransaction().replace(R.id.flContent, mainActivity2).commit();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentManager manager = getSupportFragmentManager();
+                switch (item.getItemId()){
+                    case R.id.navNhanVien:
+                        break;
+                    case R.id.navKhachHang:
+                        break;
+                    case R.id.navDoUong:
+                        break;
+                    case R.id.nav_DoanhThu:
+                        break;
+                    case R.id.nav_Top10:
+                        break;
+                    case R.id.nav_DoiMatKhau:
+                        break;
+                    case R.id.nav_DangXuat:
+                        startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
+                        break;
+                }
+                drawerLayout.closeDrawers();
+                return false;
+            }
+        });
 
     }
-
-    private void setRycCategories(){
-        ArrayList<Loai> loai = new ArrayList<>();
-        loai.add( new Loai(1, "Tea", "img_tea"));
-        loai.add( new Loai(2, "Coffee", "img_coffee"));
-        loai.add( new Loai(3, "Smoothies", "img_smoothie"));
-        loai.add( new Loai(4, "Other", "img_other"));
-
-        adapter = new CategoriesAdapter(loai);
-        rycCategories.setAdapter(adapter);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onOptionsItemSelected(item);
     }
+
 }

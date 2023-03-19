@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navDoUong"
+            android:title="Quản lý đồ uống"/>
+        <item
+            android:id="@+id/navKhachHang"
+            android:title="Quản lý khách hàng"/>
+        <item
+            android:id="@+id/navNhanVien"
+            android:title="Quản lý nhân viên"/>
+    </group>
+    <item android:title="Thống kê">
+        <menu>
+            <item
+                android:id="@+id/nav_Top10"
+                android:title="10 sách mượn nhiều nhất" />
+            <item
+                android:id="@+id/nav_DoanhThu"
+                android:title="Doanh thu" />
+        </menu>
+    </item>
+    <item android:title="Người dùng">
+        <menu>
+            <item
+                android:id="@+id/nav_DoiMatKhau"
+                android:title="Đổi mật khẩu" />
+            <item
+                android:id="@+id/nav_DangXuat"
+                android:title="Đăng xuất" />
+        </menu>
+    </item>
+</menu>
