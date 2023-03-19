@@ -35,7 +35,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
 
         dao = new NhanVienDAO(this);
 
-        SharedPreferences pref = getSharedPreferences("UESR_FILE" , MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("USER_FILE" , MODE_PRIVATE);
         edSDT.setText(pref.getString("SDT" , ""));
         edPasswordT.setText(pref.getString("PASSWORD" , ""));
         ckLuuMatKhau.setChecked(pref.getBoolean("REMEMBER" , false));

@@ -75,12 +75,7 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
                 img = view.findViewById(R.id.imgUpdateNhanVien);
 
         }
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         return view;
     }
 }

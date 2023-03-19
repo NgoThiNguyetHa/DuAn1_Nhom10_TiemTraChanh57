@@ -6,23 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-
-import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.CategoriesAdapter;
-import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.Loai;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
@@ -53,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager manager = getSupportFragmentManager();
                 switch (item.getItemId()){
                     case R.id.navNhanVien:
+                        setTitle("Quản lý nhân viên");
+                        QuanLyNhanVienFragment quanLyNhanVienFragment = new QuanLyNhanVienFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyNhanVienFragment).commit();
                         break;
                     case R.id.navKhachHang:
                         break;
