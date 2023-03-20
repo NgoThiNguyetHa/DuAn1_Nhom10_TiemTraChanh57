@@ -1,6 +1,7 @@
 package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class ManHinhDangNhap extends AppCompatActivity {
     EditText edSDT , edPasswordT;
@@ -35,7 +37,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
 
         dao = new NhanVienDAO(this);
 
-        SharedPreferences pref = getSharedPreferences("UESR_FILE" , MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("USER_FILE" , MODE_PRIVATE);
         edSDT.setText(pref.getString("SDT" , ""));
         edPasswordT.setText(pref.getString("PASSWORD" , ""));
         ckLuuMatKhau.setChecked(pref.getBoolean("REMEMBER" , false));
@@ -55,6 +57,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
                         rememberSDT(SDT , matKhau , ckLuuMatKhau.isChecked());
                         Intent intent = new Intent(getApplicationContext() , MainActivity.class);
                         intent.putExtra("user" , SDT);
+
                         startActivity(intent);
                         finish();
                     }else{
@@ -75,5 +78,13 @@ public class ManHinhDangNhap extends AppCompatActivity {
             editor.putBoolean("REMEMBER"  , checked);
         }
         editor.commit();
+    }
+    public String getSDT(){
+        SharedPreferences pref = getSharedPreferences("USER_FILE" , MODE_PRIVATE);
+        String sdt = pref.getString("SDT" , "");
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.flContent, new QuanLyNhanVienFragment());
+        fragmentTransaction.commit();
+        return sdt;
     }
 }
