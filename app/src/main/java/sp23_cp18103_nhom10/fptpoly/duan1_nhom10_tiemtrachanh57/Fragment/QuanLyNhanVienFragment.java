@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,13 +50,13 @@ public class QuanLyNhanVienFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_them_nhan_vien , container , false);
         lv = view.findViewById(R.id.lvNhanVien);
-        fabNhanVien = view.findViewById(R.id.lvNhanVien);
+        fabNhanVien = view.findViewById(R.id.fabNhanVien);
         dao = new NhanVienDAO(getActivity());
         capNhapLv();
         fabNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                openDialog(getActivity(), 0);
             }
         });
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -69,7 +70,7 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         return view;
     }
-    protected void openDialog(final Context context , final int type){
+    public void openDialog(final Context context , final int type) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_them_nhan_vien);
 
@@ -87,20 +88,81 @@ public class QuanLyNhanVienFragment extends Fragment {
         rdoNam = dialog.findViewById(R.id.rdoNam);
         rdoNu = dialog.findViewById(R.id.rdoNu);
 
-        rdgGioiTinh= dialog.findViewById(R.id.rdgGioiTinh);
+        rdgGioiTinh = dialog.findViewById(R.id.rdgGioiTinh);
 
         edMaNV.setEnabled(false);
-        if(type != 0){
+
+        if (type != 0) {
             edSDT.setText(item.getSdt());
             edMaNV.setText(String.valueOf(item.getMaNV()));
             edNamSinh.setText(item.getNamSinh());
             edMatKhau.setText(item.getMatKhau());
             edHoTen.setText(item.getHoTen());
+            if (item.getGioiTinh() == 1) {
+                rdoNam.setChecked(true);
+            } else {
+                rdoNu.setChecked(true);
+            }
+            if (item.getTrangThai() == 1) {
+                chkTrangThai.setChecked(true);
+            } else {
+                chkTrangThai.setChecked(false);
+            }
         }
+        btnHuyNhanVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btnLuuNhanVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item = new NhanVien();
+                item.setHoTen(edHoTen.getText().toString());
+                item.setMatKhau(edMatKhau.getText().toString());
+                item.setNamSinh(edNamSinh.getText().toString());
+                item.setSdt(edSDT.getText().toString());
+                if (rdoNam.isChecked()) {
+                    item.setGioiTinh(1);
+                } else {
+                    item.setGioiTinh(0);
+                }
+                if (chkTrangThai.isChecked()) {
+                    item.setTrangThai(1);
+                } else {
+                    item.setTrangThai(0);
+                }
+                if (validate() > 0) {
+                    if (type == 0) {
+                        if (dao.insertNhanVien(item) > 0) {
+                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        item.setMaNV(Integer.parseInt(edMaNV.getText().toString()));
+                        if (dao.updateNhanVien(item) > 0) {
+                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Sửa không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    capNhapLv();
+                    dialog.dismiss();
+                }
+            }
+
+        });
+        dialog.show();
     }
     void capNhapLv(){
         list = (ArrayList<NhanVien>) dao.getAll();
         adapter = new AdapterQuanLyNhanVien(getActivity() , this, list);
         lv.setAdapter(adapter);
+    }
+    public int validate(){
+        int check = 1;
+        return check;
     }
 }
