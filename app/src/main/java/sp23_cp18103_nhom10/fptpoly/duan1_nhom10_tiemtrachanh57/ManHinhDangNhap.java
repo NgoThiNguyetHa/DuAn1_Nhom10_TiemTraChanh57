@@ -79,12 +79,5 @@ public class ManHinhDangNhap extends AppCompatActivity {
         }
         editor.commit();
     }
-    public String getSDT(){
-        SharedPreferences pref = getSharedPreferences("USER_FILE" , MODE_PRIVATE);
-        String sdt = pref.getString("SDT" , "");
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.flContent, new QuanLyNhanVienFragment());
-        fragmentTransaction.commit();
-        return sdt;
-    }
+
 }

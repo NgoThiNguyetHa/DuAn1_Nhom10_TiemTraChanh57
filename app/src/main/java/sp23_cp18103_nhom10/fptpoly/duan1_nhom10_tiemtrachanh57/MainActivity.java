@@ -88,18 +88,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void getSDT(){
-        Intent intent = getIntent();
-        String sdt = intent.getStringExtra("user");
-        HomeFragment mainActivity2 = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("sdt", sdt);
-        mainActivity2.setArguments(bundle);
 
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-
-        manager.replace(R.id.flContent, mainActivity2).commit();
-
-    }
 
 }

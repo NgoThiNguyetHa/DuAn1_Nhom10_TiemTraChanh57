@@ -33,16 +33,12 @@ public class HomeFragment extends Fragment {
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
 
-        tvHi = view.findViewById(R.id.tvHi);
-        Bundle bundle = getArguments();
-        String sdt = bundle.getString("sdt");
-//        MainActivity activity = (MainActivity) getActivity();
-//        String sdt = activity.getmSDT();
-
-        dao = new NhanVienDAO(getContext());
-        NhanVien obj = dao.getSDT(sdt);
-        name = obj.getHoTen();
-        tvHi.setText("Hi "+name+"!");
+//        tvHi = view.findViewById(R.id.tvHi);
+//
+//        dao = new NhanVienDAO(getContext());
+//        NhanVien obj = dao.getSDT(sdt);
+//        name = obj.getHoTen();
+//        tvHi.setText("Hi "+name+"!");
 
 
         return view;
