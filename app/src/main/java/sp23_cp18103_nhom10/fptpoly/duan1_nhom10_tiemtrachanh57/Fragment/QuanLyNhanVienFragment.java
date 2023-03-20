@@ -50,7 +50,7 @@ public class QuanLyNhanVienFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_them_nhan_vien , container , false);
         lv = view.findViewById(R.id.lvNhanVien);
-        fabNhanVien = view.findViewById(R.id.lvNhanVien);
+        fabNhanVien = view.findViewById(R.id.fabNhanVien);
         dao = new NhanVienDAO(getActivity());
         capNhapLv();
         fabNhanVien.setOnClickListener(new View.OnClickListener() {
