@@ -23,7 +23,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maLoai integer references loai(maLoai)," +
                 "tenDoUong text not null," +
                 "giaTien integer not null,"+
-                "size text not null," +
                 "trangThai integer not null," +
                 "hinhAnh blob not null)";
         sqLiteDatabase.execSQL(tableDoUong);
@@ -63,8 +62,11 @@ public class DbHelper extends SQLiteOpenHelper {
                 "matKhau text not null)";
         sqLiteDatabase.execSQL(tableNhanVien);
 
-        String insertAdmin = "insert into nhanVien values(0 , 'admin' , 'admin' , 'admin' , 0 , 1 , 'admin' ) ";
+        String insertAdmin = "insert into nhanVien values(1 , 'admin' , 'admin' , 'admin' , 0 , 1 , 'admin' ) ";
         sqLiteDatabase.execSQL(insertAdmin);
+
+        String insertLoai = "insert into loai values( 1, 'Trà'), ( 2, 'Coffee'), ( 3, 'Sinh tố'), ( 4, 'Khác') ";
+        sqLiteDatabase.execSQL(insertLoai);
     }
 
     @Override
