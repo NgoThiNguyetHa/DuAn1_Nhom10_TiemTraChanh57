@@ -7,6 +7,7 @@ public class DoUong {
     private int giaTien;
     private String size;
     private int trangThai;
+    private byte[] hinhAnh;
 
     public DoUong(int giaTien) {
         this.giaTien = giaTien;
@@ -60,12 +61,22 @@ public class DoUong {
         this.trangThai = trangThai;
     }
 
-    public DoUong(int maDoUong, int maLoai, String tenDoUong, String size, int trangThai) {
+    public DoUong(int maDoUong, int maLoai, String tenDoUong, int giaTien, String size, int trangThai, byte[] hinhAnh) {
         this.maDoUong = maDoUong;
         this.maLoai = maLoai;
         this.tenDoUong = tenDoUong;
+        this.giaTien = giaTien;
         this.size = size;
         this.trangThai = trangThai;
+        this.hinhAnh = hinhAnh;
+    }
+
+    public byte[] getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(byte[] hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
     public DoUong() {

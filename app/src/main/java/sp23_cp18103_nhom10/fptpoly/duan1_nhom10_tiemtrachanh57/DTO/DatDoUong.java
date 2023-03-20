@@ -6,6 +6,15 @@ public class DatDoUong {
     private int tongTien;
     private int maHD;
     private int soLuong;
+    private byte[] hinhAnh;
+
+    public byte[] getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(byte[] hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
 
     public DatDoUong(int tongTien) {
         this.tongTien = tongTien;
@@ -51,11 +60,13 @@ public class DatDoUong {
         this.soLuong = soLuong;
     }
 
-    public DatDoUong(int maDatDoUong, int maDoUong, int maHD, int soLuong) {
+    public DatDoUong(int maDatDoUong, int maDoUong, int tongTien, int maHD, int soLuong, byte[] hinhAnh) {
         this.maDatDoUong = maDatDoUong;
         this.maDoUong = maDoUong;
+        this.tongTien = tongTien;
         this.maHD = maHD;
         this.soLuong = soLuong;
+        this.hinhAnh = hinhAnh;
     }
 
     public DatDoUong() {

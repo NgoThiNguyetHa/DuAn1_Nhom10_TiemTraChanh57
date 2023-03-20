@@ -24,14 +24,16 @@ public class DbHelper extends SQLiteOpenHelper {
                 "tenDoUong text not null," +
                 "giaTien integer not null,"+
                 "size text not null," +
-                "trangThai integer not null)";
+                "trangThai integer not null," +
+                "hinhAnh blob not null)";
         sqLiteDatabase.execSQL(tableDoUong);
 
         String tableDatDoUong = "create table datDoUong(maDatDoUong integer primary key autoincrement," +
                 "maDoUong integer references doUong(maDoUong)," +
                 "tongTien integer not null,"+
                 "maHD integer not null," +
-                "soLuong integer not null)";
+                "soLuong integer not null," +
+                "hinhAnh blob not null)";
         sqLiteDatabase.execSQL(tableDatDoUong);
 
         String tableKhachHang = "create table khachHang(maKH integer primary key autoincrement," +
