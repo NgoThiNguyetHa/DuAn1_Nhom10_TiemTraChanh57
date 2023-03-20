@@ -42,8 +42,7 @@
         android:layout_marginTop="30dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:endIconMode="password_toggle"
-        app:errorEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPasswordT"
             android:layout_width="match_parent"
