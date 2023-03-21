@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoiMatKhauFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_Top10:
                         break;
                     case R.id.nav_DoiMatKhau:
+                        setTitle("Đổi mật khẩu");
+                        DoiMatKhauFragment doiMatKhauFragment = new DoiMatKhauFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doiMatKhauFragment).commit();
+
                         break;
                     case R.id.nav_DangXuat:
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
