@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +26,28 @@ public class DoUongDAO {
         values.put("maLoai", obj.getMaLoai());
         values.put("tenDoUong", obj.getTenDoUong());
         values.put("giaTien", obj.getGiaTien());
-        values.put("size", obj.getSize());
         values.put("trangThai", obj.getTrangThai());
+        values.put("hinhAnh", obj.getHinhAnh());
         return db.insert("doUong", null, values);
+    }
+    public long insertDU(DoUong obj){
+        String sql = "insert into doUong values(null, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, String.valueOf(obj.getMaLoai()));
+        statement.bindString(2, obj.getTenDoUong());
+        statement.bindString(3, String.valueOf(obj.getGiaTien()));
+        statement.bindString(4, String.valueOf(obj.getTrangThai()));
+        statement.bindBlob(5, obj.getHinhAnh());
+        return statement.executeInsert();
     }
     public int updateDoUong(DoUong obj){
         ContentValues values = new ContentValues();
         values.put("maLoai", obj.getMaLoai());
         values.put("tenDoUong", obj.getTenDoUong());
         values.put("giaTien", obj.getGiaTien());
-        values.put("size", obj.getSize());
         values.put("trangThai", obj.getTrangThai());
+        values.put("hinhAnh", obj.getHinhAnh());
         return db.update("doUong", values, "maDoUong=?", new String[]{obj.getMaDoUong()+""});
     }
     public int deleteDoUong(String id){
@@ -52,8 +64,8 @@ public class DoUongDAO {
             obj.setMaLoai(Integer.parseInt(c.getString(c.getColumnIndex("maLoai"))));
             obj.setTenDoUong(c.getString(c.getColumnIndex("tenDoUong")));
             obj.setGiaTien(Integer.parseInt(c.getString(c.getColumnIndex("giaTien"))));
-            obj.setSize(c.getString(c.getColumnIndex("size")));
             obj.setTrangThai(Integer.parseInt(c.getString(c.getColumnIndex("trangThai"))));
+            obj.setHinhAnh(c.getBlob(c.getColumnIndex("hinhAnh")));
             list.add(obj);
         }
         return list;

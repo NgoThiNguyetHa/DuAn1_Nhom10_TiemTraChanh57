@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDoUongFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navKhachHang:
                         break;
                     case R.id.navDoUong:
+                        setTitle("Quản lý đồ uống");
+                        QuanLyDoUongFragment quanLyDoUongFragment = new QuanLyDoUongFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
                         break;
