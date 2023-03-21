@@ -7,11 +7,13 @@
         android:id="@+id/imgDoUong"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp" />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical"
         android:layout_gravity="center">
         <TextView
@@ -27,7 +29,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tvGiaDoUong"
-                android:layout_width="200dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:textColor="#FD0000"
                 android:textStyle="bold"
@@ -41,6 +43,11 @@
                 android:gravity="center"
                 android:background="@drawable/add_backround"/>
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/tvTrangThai"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Giá sp"/>
     </LinearLayout>
 </LinearLayout>

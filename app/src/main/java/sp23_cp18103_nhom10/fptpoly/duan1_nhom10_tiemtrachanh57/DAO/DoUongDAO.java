@@ -41,6 +41,7 @@ public class DoUongDAO {
         statement.bindBlob(5, obj.getHinhAnh());
         return statement.executeInsert();
     }
+
     public int updateDoUong(DoUong obj){
         ContentValues values = new ContentValues();
         values.put("maLoai", obj.getMaLoai());

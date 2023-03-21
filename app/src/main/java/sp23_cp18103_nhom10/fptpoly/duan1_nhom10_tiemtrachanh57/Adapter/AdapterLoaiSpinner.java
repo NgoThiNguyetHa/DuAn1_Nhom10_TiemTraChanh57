@@ -44,4 +44,22 @@ public class AdapterLoaiSpinner extends ArrayAdapter<Loai> {
         }
         return view;
     }
+
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = convertView;
+        if (view == null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.spinner_layout_item_loai, null);
+        }
+        final  Loai item = list.get(position);
+        if (item != null){
+            tvmaLoai = view.findViewById(R.id.tvMaLoaiSp);
+            tvTenLoai = view.findViewById(R.id.tvTenLoaiSp);
+
+            tvmaLoai.setText(item.getMaLoai()+". ");
+            tvTenLoai.setText(item.getTenLoai());
+        }
+        return view;
+    }
 }
