@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
 public class DoiMatKhauFragment extends Fragment {
     MainActivity mainActivity;
-    TextInputLayout edMatKhauCu, edMatKhauMoi, edNhapLaiMatKhau;
+    EditText edMatKhauCu, edMatKhauMoi, edNhapLaiMatKhau;
     Button btnLuu, btnHuy;
     NhanVienDAO dao;
 
@@ -45,9 +46,9 @@ public class DoiMatKhauFragment extends Fragment {
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edMatKhauCu.getEditText().setText("");
-                edMatKhauMoi.getEditText().setText("");
-                edNhapLaiMatKhau.getEditText().setText("");
+                edMatKhauCu.setText("");
+                edMatKhauMoi.setText("");
+                edNhapLaiMatKhau.setText("");
             }
         });
 
@@ -55,16 +56,16 @@ public class DoiMatKhauFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
-                String tenDangNhap = pref.getString("USERNAME", "");
+                String tenDangNhap = pref.getString("SDT", "");
                 if(validate() >0){
                     dao = new NhanVienDAO(getContext());
-                    NhanVien obj = dao.getID(tenDangNhap);
-                    obj.setMatKhau(edMatKhauMoi.getEditText().getText().toString());
+                    NhanVien obj = dao.getSDT(tenDangNhap);
+                    obj.setMatKhau(edMatKhauMoi.getText().toString());
                     if(dao.updateNhanVien(obj)>0){
                         Toast.makeText(getActivity(), "Thay đổi mật khấu thành công", Toast.LENGTH_SHORT).show();
-                        edMatKhauCu.getEditText().setText("");
-                        edMatKhauMoi.getEditText().setText("");
-                        edNhapLaiMatKhau.getEditText().setText("");
+                        edMatKhauCu.setText("");
+                        edMatKhauMoi.setText("");
+                        edNhapLaiMatKhau.setText("");
                     }else{
                         Toast.makeText(getActivity(), "Thay đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
                     }
@@ -76,29 +77,29 @@ public class DoiMatKhauFragment extends Fragment {
 
     private int validate(){
         int check = 1;
-        if(edMatKhauCu.getEditText().getText().length()==0 ||
-        edMatKhauMoi.getEditText().getText().length()==0 ||
-        edNhapLaiMatKhau.getEditText().getText().length()==0){
+        if(edMatKhauCu.getText().length()==0 ||
+        edMatKhauMoi.getText().length()==0 ||
+        edNhapLaiMatKhau.getText().length()==0){
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }else{
             SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE",Context.MODE_PRIVATE);
             String matKhauCu = pref.getString("PASSWORD", "");
-            String matKhauMoi = edMatKhauMoi.getEditText().getText().toString();
-            String nhapLaiMatKhau = edNhapLaiMatKhau.getEditText().getText().toString();
-            if (!edMatKhauCu.getEditText().getText().toString().equals(matKhauCu)){
+            String matKhauMoi = edMatKhauMoi.getText().toString();
+            String nhapLaiMatKhau = edNhapLaiMatKhau.getText().toString();
+            if (!edMatKhauCu.getText().toString().equals(matKhauCu)){
                 edMatKhauCu.setError("Mật khẩu cũ sai");
                 check = -1;
             }else{
-                edMatKhauCu.setError("");
+                edMatKhauCu.setError(null);
             }
 
             if (!matKhauMoi.equals(nhapLaiMatKhau)){
                 edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
                 check = -1;
             }else{
-                edMatKhauMoi.setError("");
-                edNhapLaiMatKhau.setError("");
+                edMatKhauMoi.setError(null);
+                edNhapLaiMatKhau.setError(null);
             }
         }
         return check;
