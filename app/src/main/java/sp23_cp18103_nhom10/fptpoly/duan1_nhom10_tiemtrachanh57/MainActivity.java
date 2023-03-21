@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDoUongFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoiMatKhauFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navKhachHang:
                         break;
                     case R.id.navDoUong:
+                        setTitle("Quản lý đồ uống");
+                        QuanLyDoUongFragment quanLyDoUongFragment = new QuanLyDoUongFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
                         break;
@@ -93,18 +97,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void getSDT(){
-        Intent intent = getIntent();
-        String sdt = intent.getStringExtra("user");
-        HomeFragment mainActivity2 = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("sdt", sdt);
-        mainActivity2.setArguments(bundle);
 
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-
-        manager.replace(R.id.flContent, mainActivity2).commit();
-
-    }
 
 }
