@@ -61,6 +61,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "matKhau text not null)";
         sqLiteDatabase.execSQL(tableNhanVien);
 
+        String insertAdmin = "insert into nhanVien values(0 , 'admin' , 'admin' , 'admin' , 0 , 1 , 'admin' ) ";
+        sqLiteDatabase.execSQL(insertAdmin);
     }
 
     @Override
