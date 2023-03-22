@@ -17,23 +17,6 @@
         android:layout_marginTop="240dp"
         android:textColor="@color/black"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edChonChiNhanh"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="#FFCC3E"
-            android:hint="Chọn chi nhánh"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:layout_gravity="center"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="120dp"

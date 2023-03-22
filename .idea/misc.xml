@@ -20,13 +20,17 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/activity_main2.xml" value="0.2" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/activity_manhinhchao.xml" value="0.11666666666666667" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/activity_manhinhdangnhap.xml" value="0.10677083333333333" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_khachhang.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_them_do_uong.xml" value="0.176" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_them_nhan_vien.xml" value="0.176" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/fragment_doi_mat_khau.xml" value="0.1" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/fragment_khachhang.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/fragment_quan_ly_do_uong.xml" value="0.15885416666666666" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/fragment_them_nhan_vien.xml" value="0.1" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/fragment_thong_ke.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_dat_do_uong.xml" value="0.264" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_do_uong.xml" value="0.264" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_khachhang.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_loai.xml" value="0.6" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_them_nhan_vien.xml" value="0.4" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_nav.xml" value="0.152" />
@@ -35,12 +39,6 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/menu/drawer_menu.xml" value="0.152" />
         <entry key="app/src/main/res/layout/activity_manhinhchao.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_manhinhdangnhap.xml" value="0.1" />
-
-        <entry key="app/src/main/res/layout/dialog_khachhang.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/fragment_khachhang.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/layout_item_khachhang.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/quanlykhachhang.xml" value="0.10371376811594203" />
-
       </map>
     </option>
   </component>
