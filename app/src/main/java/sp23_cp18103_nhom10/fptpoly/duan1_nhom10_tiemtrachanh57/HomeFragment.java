@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         fabCart = view.findViewById(R.id.fabCart);
 
 
+
         tvHi = view.findViewById(R.id.tvHi);
 //        Bundle bundle = getArguments();
 //        String sdt = bundle.getString("sdt");
