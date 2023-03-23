@@ -75,6 +75,7 @@ public class QuanLyKhachHangFragment extends Fragment {
     public  void openDialog(final Context context,final int type) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_khachhang);
+        //dialog khach hàng
 
 
         edMaKhachHang = dialog.findViewById(R.id.edMaKhachHang);
