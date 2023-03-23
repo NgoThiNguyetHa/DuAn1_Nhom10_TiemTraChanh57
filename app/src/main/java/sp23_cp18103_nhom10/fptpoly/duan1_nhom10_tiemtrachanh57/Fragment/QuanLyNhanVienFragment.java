@@ -59,6 +59,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                 openDialog(getActivity(), 0);
             }
         });
+
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
