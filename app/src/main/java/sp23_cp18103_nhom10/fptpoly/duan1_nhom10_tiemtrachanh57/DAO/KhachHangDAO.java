@@ -63,7 +63,8 @@ public class KhachHangDAO {
 
     public KhachHang getID(String id){
         String sql = "select * from khachHang where maKH=?";
-        List<KhachHang> list = getData(sql, id);
+        List<KhachHang> list = getData(sql,id);
         return list.get(0);
+
     }
 }

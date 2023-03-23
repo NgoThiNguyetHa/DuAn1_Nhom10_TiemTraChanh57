@@ -68,19 +68,7 @@
             android:text="Nữ"
             android:layout_marginLeft="20dp"/>
     </RadioGroup>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edMatKhauKhachHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mật khẩu" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
