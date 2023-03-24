@@ -18,7 +18,7 @@
         <menu>
             <item
                 android:id="@+id/nav_Top10"
-                android:title="10 sách mượn nhiều nhất" />
+                android:title="10 đồ uống đặt nhiều nhất" />
             <item
                 android:id="@+id/nav_DoanhThu"
                 android:title="Doanh thu" />
