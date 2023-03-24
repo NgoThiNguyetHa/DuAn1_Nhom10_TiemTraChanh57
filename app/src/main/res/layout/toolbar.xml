@@ -4,5 +4,12 @@
     android:layout_height="?attr/actionBarSize"
     android:background="#DD460A"
     android:id="@+id/toolbar">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_cart"
+        />
+
+
 
 </androidx.appcompat.widget.Toolbar>

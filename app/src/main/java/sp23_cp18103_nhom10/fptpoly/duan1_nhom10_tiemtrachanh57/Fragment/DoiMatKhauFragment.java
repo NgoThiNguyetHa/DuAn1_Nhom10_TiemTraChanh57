@@ -96,16 +96,17 @@ public class DoiMatKhauFragment extends Fragment {
                 check = -1;
             }else{
                 edMatKhauCu.setError(null);
+                if (!matKhauMoi.equals(nhapLaiMatKhau)){
+                    edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
+                    check = -1;
+                }else{
+                    edMatKhauCu.setError(null);
+                    edMatKhauMoi.setError(null);
+                    edNhapLaiMatKhau.setError(null);
+                }
             }
 
-            if (!matKhauMoi.equals(nhapLaiMatKhau)){
-                edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
-                check = -1;
-            }else{
-                edMatKhauCu.setError(null);
-                edMatKhauMoi.setError(null);
-                edNhapLaiMatKhau.setError(null);
-            }
+
         }
         return check;
     }

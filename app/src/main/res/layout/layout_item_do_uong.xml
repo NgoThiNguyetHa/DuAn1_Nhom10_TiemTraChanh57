@@ -52,7 +52,7 @@
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Giá sp"
+            android:text="Trạng thái"
             android:textSize="20dp"/>
     </LinearLayout>
 </LinearLayout>

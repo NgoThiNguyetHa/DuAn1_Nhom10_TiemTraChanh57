@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         String sdt = intent.getStringExtra("user");
 
         FragmentManager manager = getSupportFragmentManager();
-        HomeFragment mainActivity2 = new HomeFragment();
-        manager.beginTransaction().replace(R.id.flContent, mainActivity2).commit();
+        HomeFragment homeFragment = new HomeFragment();
+        manager.beginTransaction().replace(R.id.flContent, homeFragment).commit();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

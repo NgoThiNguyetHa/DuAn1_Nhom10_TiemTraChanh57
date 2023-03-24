@@ -215,13 +215,14 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rycPopular"
+            <GridView
+                android:id="@+id/gvPopular"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="20dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:horizontalSpacing="20dp"
+                android:verticalSpacing="20dp"
+                android:numColumns="2"/>
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
