@@ -109,6 +109,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             } else {
                 chkTrangThai.setChecked(false);
             }
+            edMatKhau.setEnabled(false);
         }
         btnHuyNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override

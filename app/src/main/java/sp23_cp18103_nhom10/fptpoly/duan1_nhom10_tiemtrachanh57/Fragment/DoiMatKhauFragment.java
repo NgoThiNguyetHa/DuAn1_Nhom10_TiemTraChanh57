@@ -102,6 +102,7 @@ public class DoiMatKhauFragment extends Fragment {
                 edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
                 check = -1;
             }else{
+                edMatKhauCu.setError(null);
                 edMatKhauMoi.setError(null);
                 edNhapLaiMatKhau.setError(null);
             }
