@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
     ArrayList<DoUong> list;
     GridViewAdapter adapter;
     GridView gv;
-    FloatingActionButton fabCart;
 
 
     @Nullable
@@ -46,8 +45,6 @@ public class HomeFragment extends Fragment {
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
         gv = view.findViewById(R.id.gvPopular);
-
-        fabCart = view.findViewById(R.id.fabCart);
 
         dao = new DoUongDAO(getActivity());
 

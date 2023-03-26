@@ -225,12 +225,5 @@
                 android:numColumns="2"/>
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:layout_margin="25dp"
-        android:backgroundTint="#F89B4A"
-        android:src="@drawable/ic_cart"/>
+
 </FrameLayout>
