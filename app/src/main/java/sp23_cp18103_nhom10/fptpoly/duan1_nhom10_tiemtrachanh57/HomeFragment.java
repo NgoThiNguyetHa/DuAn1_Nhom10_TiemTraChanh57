@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
         btnOther = view.findViewById(R.id.btnOther);
         gv = view.findViewById(R.id.gvPopular);
 
+
         dao = new DoUongDAO(getActivity());
 
         btnTea.setOnClickListener(new View.OnClickListener() {
