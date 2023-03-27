@@ -222,7 +222,10 @@
                 android:orientation="horizontal"
                 android:horizontalSpacing="20dp"
                 android:verticalSpacing="20dp"
-                android:numColumns="2"/>
+                android:numColumns="2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
     </ScrollView>
 

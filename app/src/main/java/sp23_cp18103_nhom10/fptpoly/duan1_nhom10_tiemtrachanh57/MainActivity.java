@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         manager.beginTransaction().replace(R.id.flContent, quanLyNhanVienFragment).commit();
                         break;
                     case R.id.navKhachHang:
-                        tvTitle.setText("Quản lý nhân viên");
+                        tvTitle.setText("Quản lý khách hàng");
                         setTitle("Quản lý nhân viên");
                         QuanLyKhachHangFragment quanLyKhachHangFragment = new QuanLyKhachHangFragment();
                         manager.beginTransaction().replace(R.id.flContent, quanLyKhachHangFragment).commit();

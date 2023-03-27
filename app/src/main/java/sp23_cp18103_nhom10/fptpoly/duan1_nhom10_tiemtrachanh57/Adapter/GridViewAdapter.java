@@ -60,7 +60,7 @@ public class GridViewAdapter extends BaseAdapter {
         imgAnh.setImageBitmap(bitmap);
 
         tvTenDoUong.setText(item.getTenDoUong());
-        tvGia.setText(item.getGiaTien()+"");
+        tvGia.setText(item.getGiaTien()+" VND");
         return view;
     }
 }
