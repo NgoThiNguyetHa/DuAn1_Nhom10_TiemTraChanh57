@@ -11,10 +11,11 @@
         android:id="@+id/tvDoiMatKhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="219dp"
+        android:layout_marginTop="100dp"
         android:text="ĐỔI MẬT KHẨU"
         android:textSize="30dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         >
         <com.google.android.material.textfield.TextInputEditText
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edMatKhauMoi"
             android:layout_width="match_parent"
@@ -55,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edNhapLaiMatKhau"
             android:layout_width="match_parent"
@@ -64,16 +65,29 @@
             android:hint="Nhập lại mật khẩu" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFCC3E"
-        android:text="Thay đổi"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginTop="50dp"
-
-        />
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/btnLuyDMK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFCC3E"/>
+        <Button
+            android:id="@+id/btnHuyDMK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFCC3E"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -16,6 +16,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
+
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDoUongFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoiMatKhauFragment;
+
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,14 +67,24 @@ public class MainActivity extends AppCompatActivity {
                         manager.beginTransaction().replace(R.id.flContent, quanLyNhanVienFragment).commit();
                         break;
                     case R.id.navKhachHang:
+                        setTitle("Quản lý nhân viên");
+                        QuanLyKhachHangFragment quanLyKhachHangFragment = new QuanLyKhachHangFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyKhachHangFragment).commit();
                         break;
                     case R.id.navDoUong:
+                        setTitle("Quản lý đồ uống");
+                        QuanLyDoUongFragment quanLyDoUongFragment = new QuanLyDoUongFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
                         break;
                     case R.id.nav_Top10:
                         break;
                     case R.id.nav_DoiMatKhau:
+                        setTitle("Đổi mật khẩu");
+                        DoiMatKhauFragment doiMatKhauFragment = new DoiMatKhauFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doiMatKhauFragment).commit();
+
                         break;
                     case R.id.nav_DangXuat:
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
@@ -88,18 +104,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void getSDT(){
-        Intent intent = getIntent();
-        String sdt = intent.getStringExtra("user");
-        HomeFragment mainActivity2 = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("sdt", sdt);
-        mainActivity2.setArguments(bundle);
 
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-
-        manager.replace(R.id.flContent, mainActivity2).commit();
-
-    }
 
 }

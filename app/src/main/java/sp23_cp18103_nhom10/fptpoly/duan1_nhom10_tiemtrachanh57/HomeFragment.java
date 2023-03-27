@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 
@@ -22,7 +24,7 @@ public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     String name ="";
     NhanVienDAO dao;
-    View headerView;
+    FloatingActionButton fabCart;
 
     @Nullable
     @Override
@@ -33,16 +35,19 @@ public class HomeFragment extends Fragment {
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
 
-        tvHi = view.findViewById(R.id.tvHi);
-        Bundle bundle = getArguments();
-        String sdt = bundle.getString("sdt");
-//        MainActivity activity = (MainActivity) getActivity();
-//        String sdt = activity.getmSDT();
+        fabCart = view.findViewById(R.id.fabCart);
 
-        dao = new NhanVienDAO(getContext());
-        NhanVien obj = dao.getSDT(sdt);
-        name = obj.getHoTen();
-        tvHi.setText("Hi "+name+"!");
+
+        tvHi = view.findViewById(R.id.tvHi);
+//        Bundle bundle = getArguments();
+//        String sdt = bundle.getString("sdt");
+////        MainActivity activity = (MainActivity) getActivity();
+////        String sdt = activity.getmSDT();
+
+//        dao = new NhanVienDAO(getContext());
+//        NhanVien obj = dao.getSDT(sdt);
+//        name = obj.getHoTen();
+//        tvHi.setText("Hi "+name+"!");
 
 
         return view;
