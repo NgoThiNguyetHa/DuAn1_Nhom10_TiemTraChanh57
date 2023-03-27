@@ -4,37 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <EditText
-        android:id="@+id/edMaKhachHang"
+        android:id="@+id/edMaDoUong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mã khách hàng"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
+        android:hint="Mã đồ uống"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
+    <Spinner
+        android:id="@+id/spnMaLoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHoTenKhachHang"
+            android:id="@+id/edTenDoUong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ tên"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edSDTKhachHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="SĐT"/>
+            android:hint="Tên đồ uống"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -42,41 +36,55 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp">
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edNamSinhKhachHang"
+            android:id="@+id/edGia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Năm sinh" />
+            android:hint="Giá tiền"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <RadioGroup
-        android:id="@+id/rdgGioiTinhKhạchHang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-        <RadioButton
-            android:id="@+id/rdoNamKH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nam"
-            android:layout_marginLeft="20dp"/>
-        <RadioButton
-            android:id="@+id/rdoNuKH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nữ"
-            android:layout_marginLeft="20dp"/>
-    </RadioGroup>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="20dp">
+        android:layout_marginLeft="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn ảnh"/>
+        <ImageView
+            android:id="@+id/imgCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            android:layout_marginLeft="15dp"/>
+        <ImageView
+            android:id="@+id/imgFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_folder_upload"
+            android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imgAnh"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_image"
+        android:layout_gravity="center"/>
+    <CheckBox
+        android:id="@+id/chkTrangThai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Còn hàng"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <Button
-            android:id="@+id/btnLuuKhachHang"
+            android:id="@+id/btnLuuDoUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu"
@@ -84,7 +92,7 @@
             android:layout_weight="1"
             android:backgroundTint="#F89B4A"/>
         <Button
-            android:id="@+id/btnHuyKhachHang"
+            android:id="@+id/btnHuyDoUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"

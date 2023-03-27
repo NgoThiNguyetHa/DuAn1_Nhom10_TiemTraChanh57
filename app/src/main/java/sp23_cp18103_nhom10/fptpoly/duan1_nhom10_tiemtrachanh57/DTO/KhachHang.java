@@ -7,6 +7,9 @@ public class KhachHang {
     private String namSinh;
     private int gioiTinh;
 
+    public KhachHang() {
+    }
+
     public int getMaKH() {
         return maKH;
     }
@@ -45,16 +48,5 @@ public class KhachHang {
 
     public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
-    }
-
-    public KhachHang(int maKH, String hoTen, String sdt, String namSinh, int gioiTinh) {
-        this.maKH = maKH;
-        this.hoTen = hoTen;
-        this.sdt = sdt;
-        this.namSinh = namSinh;
-        this.gioiTinh = gioiTinh;
-    }
-
-    public KhachHang() {
     }
 }
