@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     String name ="";
     NhanVienDAO dao;
+    View headerView;
     FloatingActionButton fabCart;
 
     @Nullable
@@ -34,22 +35,6 @@ public class HomeFragment extends Fragment {
         btnCoffee = view.findViewById(R.id.btnCoffee);
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
-
-        fabCart = view.findViewById(R.id.fabCart);
-
-
-        tvHi = view.findViewById(R.id.tvHi);
-//        Bundle bundle = getArguments();
-//        String sdt = bundle.getString("sdt");
-////        MainActivity activity = (MainActivity) getActivity();
-////        String sdt = activity.getmSDT();
-
-//        dao = new NhanVienDAO(getContext());
-//        NhanVien obj = dao.getSDT(sdt);
-//        name = obj.getHoTen();
-//        tvHi.setText("Hi "+name+"!");
-
-
         return view;
     }
     
