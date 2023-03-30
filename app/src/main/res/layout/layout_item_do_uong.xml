@@ -37,15 +37,7 @@
                 android:textStyle="bold"
                 android:text="Giá sp"
                 android:textSize="20dp"/>
-            <TextView
-                android:id="@+id/tvAddToCart"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="+"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:background="@drawable/add_backround"
-                />
+
         </LinearLayout>
         <TextView
             android:id="@+id/tvTrangThai"

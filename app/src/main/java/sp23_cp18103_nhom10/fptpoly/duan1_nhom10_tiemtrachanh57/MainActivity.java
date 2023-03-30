@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_Top10:
                         break;
+                    case R.id.navHoaDon:
+                        break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");
                         setTitle("Đổi mật khẩu");

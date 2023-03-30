@@ -8,6 +8,9 @@
             android:id="@+id/navDoUong"
             android:title="Quản lý đồ uống"/>
         <item
+            android:id="@+id/navHoaDon"
+            android:title="Quản lý hóa đơn"/>
+        <item
             android:id="@+id/navKhachHang"
             android:title="Quản lý khách hàng"/>
         <item
