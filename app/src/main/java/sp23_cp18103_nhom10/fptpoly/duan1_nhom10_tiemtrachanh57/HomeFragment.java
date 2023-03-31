@@ -36,6 +36,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.GioHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
 
 
 public class HomeFragment extends Fragment {
@@ -122,8 +123,8 @@ public class HomeFragment extends Fragment {
         TextView tvTen = view.findViewById(R.id.tvTenDoUongChiTiet);
         TextView tvGia = view.findViewById(R.id.tvGiaChiTiet);
         TextView tvSoLuong = view.findViewById(R.id.tvSoLuong);
-        Button tvCong = view.findViewById(R.id.tvCongSL);
-        Button tvTru = view.findViewById(R.id.tvTruSL);
+        Button btnCong = view.findViewById(R.id.btnCongSL);
+        Button btnTru = view.findViewById(R.id.btnTruSL);
         ImageView imgAnh = view.findViewById(R.id.imgAnhChiTiet);
 
         tvTen.setText(item.getTenDoUong());
@@ -131,6 +132,41 @@ public class HomeFragment extends Fragment {
         byte[] hinhAnh = item.getHinhAnh();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
         imgAnh.setImageBitmap(bitmap);
+
+        btnCong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int soLuongMoi = Integer.parseInt(tvSoLuong.getText().toString())+1;
+                if (soLuongMoi > 9){
+                    btnCong.setVisibility(view.INVISIBLE);
+                    btnTru.setVisibility(view.VISIBLE);
+                    tvSoLuong.setText(soLuongMoi+"");
+                }else {
+                    btnCong.setVisibility(view.VISIBLE);
+                    btnTru.setVisibility(view.VISIBLE);
+                    tvSoLuong.setText(soLuongMoi+"");
+                }
+            }
+        });
+        if (Integer.parseInt(tvSoLuong.getText().toString()) <2){
+            btnCong.setVisibility(view.VISIBLE);
+            btnTru.setVisibility(view.INVISIBLE);
+        }
+        btnTru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int soLuongMoi = Integer.parseInt(tvSoLuong.getText().toString())-1;
+                if (soLuongMoi <2){
+                    btnCong.setVisibility(view.VISIBLE);
+                    btnTru.setVisibility(view.INVISIBLE);
+                    tvSoLuong.setText(soLuongMoi+"");
+                }else {
+                    btnCong.setVisibility(view.VISIBLE);
+                    btnTru.setVisibility(view.VISIBLE);
+                    tvSoLuong.setText(soLuongMoi+"");
+                }
+            }
+        });
 
         builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             @Override

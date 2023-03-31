@@ -28,6 +28,17 @@ public class KhachHangDAO {
         values.put("gioiTinh", obj.getGioiTinh());
         return db.insert("khachHang", null, values);
     }
+//    public long insertKH(KhachHang obj){
+//        String sql = "select maKH from khachHang";
+//        ContentValues values = new ContentValues();
+//        values.put("hoTen", obj.getHoTen());
+//        values.put("sdt", obj.getSdt());
+//        values.put("namSinh", obj.getNamSinh());
+//        values.put("gioiTinh", obj.getGioiTinh());
+//        if (db.insert("khachHang", null, values) >0){
+//            return db.insert("khachHang", null, values);
+//        }
+//    }
     public int updateKhachHang(KhachHang obj){
         ContentValues values = new ContentValues();
         values.put("hoTen", obj.getHoTen());
