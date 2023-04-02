@@ -45,6 +45,7 @@ public class QuanLyKhachHangFragment extends Fragment {
     AdapterQuanLyKhachHang adapterQuanLyKhachHang;
     KhachHang item;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,17 +73,15 @@ public class QuanLyKhachHangFragment extends Fragment {
         return view;
 
     }
-    public  void openDialog(final Context context,final int type) {
+    public void openDialog(final Context context,final int type) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_khachhang);
         //dialog khach hàng
-
 
         edMaKhachHang = dialog.findViewById(R.id.edMaKhachHang);
         edHoTenKhachHang = dialog.findViewById(R.id.edHoTenKhachHang);
         edSDTKhachHang = dialog.findViewById(R.id.edSDTKhachHang);
         edNamSinhKhachHang = dialog.findViewById(R.id.edNamSinhKhachHang);
-
 
         btnLuuKhachHang = dialog.findViewById(R.id.btnLuuKhachHang);
         btnHuyKhachHang = dialog.findViewById(R.id.btnHuyKhachHang);

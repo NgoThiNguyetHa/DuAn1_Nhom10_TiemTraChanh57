@@ -141,6 +141,11 @@ public class QuanLyDoUongFragment extends Fragment {
                 chkTrangThai.setChecked(false);
             }
 
+            byte[] hinhAnh = item.getHinhAnh();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+            imgAnh.setImageBitmap(bitmap);
+
+
             int position = 0;
             for (int i=0; i<listLoai.size(); i++){
                 if (item.getMaLoai() == listLoai.get(i).getMaLoai()){

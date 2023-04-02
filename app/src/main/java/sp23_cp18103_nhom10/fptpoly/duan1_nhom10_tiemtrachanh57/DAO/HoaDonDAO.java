@@ -27,10 +27,8 @@ public class HoaDonDAO {
         ContentValues values = new ContentValues();
         values.put("maKH", obj.getMaKH());
         values.put("maNV", obj.getMaNV());
-        values.put("soLuong", obj.getSoLuong());
         values.put("tongTien", obj.getTongTien());
         values.put("trangThai", obj.getTrangThai());
-        values.put("tenKH", obj.getTenKH());
         values.put("ngayXuat", sdf.format(obj.getNgayXuat()));
         return db.insert("hoaDon", null, values);
     }
@@ -39,10 +37,8 @@ public class HoaDonDAO {
         ContentValues values = new ContentValues();
         values.put("maKH", obj.getMaKH());
         values.put("maNV", obj.getMaNV());
-        values.put("soLuong", obj.getSoLuong());
         values.put("tongTien", obj.getTongTien());
         values.put("trangThai", obj.getTrangThai());
-        values.put("tenKH", obj.getTenKH());
         values.put("ngayXuat", sdf.format(obj.getNgayXuat()));
         return db.update("hoaDon", values, "maHD=?",new String[]{obj.getMaHD()+""});
     }
@@ -83,4 +79,11 @@ public class HoaDonDAO {
         List<HoaDon> list = getData(sql, id);
         return list.get(0);
     }
+
+    public HoaDon getHDLast(){
+        String sql = "SELECT * FROM hoaDon ORDER BY maHD DESC LIMIT 1";
+        List<HoaDon> list = getData(sql);
+        return list.get(0);
+    }
+
 }

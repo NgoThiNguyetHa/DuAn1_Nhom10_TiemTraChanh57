@@ -81,4 +81,9 @@ public class DoUongDAO {
         List<DoUong> list = getData(sql, id);
         return list.get(0);
     }
+    public List<DoUong> getLoai(String maLoai){
+        String sql = "select * from doUong where maLoai=?";
+        List<DoUong> list = getData(sql, maLoai);
+        return list;
+    }
 }

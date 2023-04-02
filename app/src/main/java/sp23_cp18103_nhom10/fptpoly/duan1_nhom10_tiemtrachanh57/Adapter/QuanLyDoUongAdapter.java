@@ -24,7 +24,7 @@ public class QuanLyDoUongAdapter extends ArrayAdapter<DoUong> {
     private Context context;
     QuanLyDoUongFragment fragment;
     ArrayList<DoUong> list;
-    TextView tvTenDoUong, tvGia, tvAdd, tvTrangThai;
+    TextView tvTenDoUong, tvGia, tvTrangThai;
     ImageView imgAnh;
 
     public QuanLyDoUongAdapter(@NonNull Context context, QuanLyDoUongFragment fragment, ArrayList<DoUong> list) {
@@ -46,7 +46,6 @@ public class QuanLyDoUongAdapter extends ArrayAdapter<DoUong> {
         if (view != null){
             tvTenDoUong = view.findViewById(R.id.tvTenDoUong);
             tvGia = view.findViewById(R.id.tvGiaDoUong);
-            tvAdd = view.findViewById(R.id.tvAddToCart);
             tvTrangThai = view.findViewById(R.id.tvTrangThai);
             imgAnh = view.findViewById(R.id.imgDoUong);
 
@@ -63,12 +62,7 @@ public class QuanLyDoUongAdapter extends ArrayAdapter<DoUong> {
             Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
             imgAnh.setImageBitmap(bitmap);
 
-            tvAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                }
-            });
         }
         return view;
     }
