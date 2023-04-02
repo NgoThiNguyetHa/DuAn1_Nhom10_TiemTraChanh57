@@ -79,5 +79,9 @@ public class DatDoUongDAO {
         List<DatDoUong> list = getData(sql, id);
         return list.get(0);
     }
+    public List<DatDoUong> getMaHoaDon(String maHD){
+        String sql = "select * from datDoUong where maHD=?";
+        return getData(sql, maHD);
+    }
 
 }
