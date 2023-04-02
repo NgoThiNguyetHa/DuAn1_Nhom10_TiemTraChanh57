@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         dao = new DoUongDAO(getActivity());
         if(dao.getLoai("1").size() != 0) {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
-            //get
+            //get nhu
         }
         if(dao.getLoai("2").size() != 0) {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("2"));
