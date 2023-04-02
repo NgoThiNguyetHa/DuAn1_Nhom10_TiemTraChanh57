@@ -31,6 +31,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -159,8 +160,13 @@ public class QuanLyDoUongFragment extends Fragment {
         imgCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, requestCodeCamera);
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 100);
+                }else {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, requestCodeCamera);
+                }
 //                    ActivityCompat.requestPermissions(getActivity(),
 //                            new String[]{Manifest.permission.CAMERA},
 //                            requestCodeCamera);
@@ -171,9 +177,14 @@ public class QuanLyDoUongFragment extends Fragment {
         imgFileUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, requestCodeFolder);
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 100);
+                }else {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent, requestCodeFolder);
+                }
 
 //                    ActivityCompat.requestPermissions(getActivity(),
 //                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},

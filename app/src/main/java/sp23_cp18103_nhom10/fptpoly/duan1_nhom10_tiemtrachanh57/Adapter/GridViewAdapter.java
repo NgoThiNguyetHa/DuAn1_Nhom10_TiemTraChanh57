@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DatDoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
@@ -21,21 +24,22 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDo
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.HomeFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
-public class GridViewAdapter extends BaseAdapter {
+public class GridViewAdapter extends BaseAdapter implements Filterable {
     private Context context;
     ArrayList<DoUong> list;
+    ArrayList<DoUong> listOld;
     HomeFragment fragment;
     TextView tvTenDoUong, tvGia, tvAdd, tvAddToCart;
     ImageView imgAnh;
 
     public GridViewAdapter(Context context, HomeFragment fragment, ArrayList<DoUong> list) {
         this.context = context;
-        this.list = list;
+        this.listOld = list;
         this.fragment = fragment;
     }
     @Override
     public int getCount() {
-        return list.size();
+        return listOld.size();
     }
 
     @Override
@@ -57,7 +61,7 @@ public class GridViewAdapter extends BaseAdapter {
         tvGia = view.findViewById(R.id.tvGiaDoUong);
 
 
-        final DoUong item = list.get(i);
+        final DoUong item = listOld.get(i);
 
         byte[] hinhAnh = item.getHinhAnh();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
@@ -88,5 +92,37 @@ public class GridViewAdapter extends BaseAdapter {
 //            }
 //        });
         return view;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strSearch = constraint.toString();
+                    if(strSearch.isEmpty()){
+                       list = listOld;
+                    }else{
+                        List<DoUong> listDoUong = new ArrayList<>();
+                        for(DoUong doUong: listOld){
+                            if(doUong.getTenDoUong().toLowerCase().contains(strSearch.toLowerCase())){
+                                listDoUong.add(doUong);
+                            }
+                        }
+                        list = (ArrayList<DoUong>) listDoUong;
+                    }
+                    FilterResults filterResults = new FilterResults();
+                    filterResults.values = list;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (ArrayList<DoUong>) results.values;
+                notifyDataSetChanged();
+
+            }
+        };
     }
 }
