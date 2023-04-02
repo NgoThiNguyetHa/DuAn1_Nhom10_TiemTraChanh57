@@ -15,6 +15,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
@@ -43,15 +46,15 @@ public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     DoUongDAO dao;
     ArrayList<DoUong> list;
+    ArrayList<DoUong> listAll;
     GridViewAdapter adapter;
     GridView gv;
+    TextInputEditText edTimKiem;
+    TextView tv_entry;
     DoUong item;
 
     public static ArrayList<GioHang> listGioHang;
-    String name ="";
-    NhanVienDAO dao;
-    View headerView;
-    FloatingActionButton fabCart;
+
 
     @Nullable
     @Override
@@ -62,6 +65,49 @@ public class HomeFragment extends Fragment {
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
         gv = view.findViewById(R.id.gvPopular);
+        edTimKiem= view.findViewById(R.id.edTimKiem);
+        tv_entry = view.findViewById(R.id.tv_entry);
+        listAll = new ArrayList<>();
+        dao = new DoUongDAO(getActivity());
+        if(dao.getLoai("1").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
+            //get nhu
+        }
+        if(dao.getLoai("2").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("2"));
+        }
+        if(dao.getLoai("3").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("3"));
+        }
+        if(dao.getLoai("4").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("4"));
+        }
+        ArrayList <DoUong> listSearch = new ArrayList<>();
+        edTimKiem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                listSearch.clear();
+                tv_entry.setVisibility(View.VISIBLE);
+                for (int i = 0; i < listAll.size(); i++) {
+                    if(listAll.get(i).getTenDoUong().contains(edTimKiem.getText()) && edTimKiem.getText().length() != 0) {
+                        listSearch.add(listAll.get(i));
+                        tv_entry.setVisibility(View.GONE);
+                    }
+                }
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listSearch);
+                gv.setAdapter(adapter);
+            }
+        });
 
         //nếu giỏ hàng đã có dữ liệu thì k cần tạo mảng mới
         if (listGioHang != null){
@@ -70,7 +116,7 @@ public class HomeFragment extends Fragment {
             listGioHang = new ArrayList<>();
         }
 
-        dao = new DoUongDAO(getActivity());
+
 
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
