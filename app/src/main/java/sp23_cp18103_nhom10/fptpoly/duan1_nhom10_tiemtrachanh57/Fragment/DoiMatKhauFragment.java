@@ -2,6 +2,7 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.MainActivity;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.ManHinhDangNhap;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
 public class DoiMatKhauFragment extends Fragment {
@@ -66,6 +68,8 @@ public class DoiMatKhauFragment extends Fragment {
                         edMatKhauCu.setText("");
                         edMatKhauMoi.setText("");
                         edNhapLaiMatKhau.setText("");
+                        Intent intent = new Intent(getActivity(), ManHinhDangNhap.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(), "Thay đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
                     }
@@ -92,15 +96,17 @@ public class DoiMatKhauFragment extends Fragment {
                 check = -1;
             }else{
                 edMatKhauCu.setError(null);
+                if (!matKhauMoi.equals(nhapLaiMatKhau)){
+                    edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
+                    check = -1;
+                }else{
+                    edMatKhauCu.setError(null);
+                    edMatKhauMoi.setError(null);
+                    edNhapLaiMatKhau.setError(null);
+                }
             }
 
-            if (!matKhauMoi.equals(nhapLaiMatKhau)){
-                edNhapLaiMatKhau.setError("Mật khẩu không trùng khớp");
-                check = -1;
-            }else{
-                edMatKhauMoi.setError(null);
-                edNhapLaiMatKhau.setError(null);
-            }
+
         }
         return check;
     }

@@ -5,11 +5,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DatDoUong;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
 public class DatDoUongDAO {
@@ -19,13 +21,24 @@ public class DatDoUongDAO {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
+//    public long insertDatDoUong(DatDoUong obj){
+//        ContentValues values = new ContentValues();
+//        values.put("maDoUong", obj.getMaDoUong());
+//        values.put("tongTien", obj.getTongTien());
+//        values.put("maHD", obj.getMaHD());
+//        values.put("soLuong", obj.getSoLuong());
+//        return db.insert("datDoUong", null, values);
+//    }
     public long insertDatDoUong(DatDoUong obj){
-        ContentValues values = new ContentValues();
-        values.put("maDoUong", obj.getMaDoUong());
-        values.put("tongTien", obj.getTongTien());
-        values.put("maHD", obj.getMaHD());
-        values.put("soLuong", obj.getSoLuong());
-        return db.insert("datDoUong", null, values);
+        String sql = "insert into datDoUong values(null, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, String.valueOf(obj.getMaDoUong()));
+        statement.bindString(2, String.valueOf(obj.getTongTien()));
+        statement.bindString(3, String.valueOf(obj.getMaHD()));
+        statement.bindString(4, String.valueOf(obj.getSoLuong()));
+        statement.bindBlob(5, obj.getHinhAnh());
+        return statement.executeInsert();
     }
     public int updateDatDoUong(DatDoUong obj){
         ContentValues values = new ContentValues();
@@ -33,6 +46,7 @@ public class DatDoUongDAO {
         values.put("tongTien", obj.getTongTien());
         values.put("maHD", obj.getMaHD());
         values.put("soLuong", obj.getSoLuong());
+        values.put("hinhAnh", obj.getHinhAnh());
         return db.update("datDoUong",values, "maDatDoUong=?", new String[]{obj.getMaDatDoUong()+""});
     }
     public int deleteDatDoUong(String id){
