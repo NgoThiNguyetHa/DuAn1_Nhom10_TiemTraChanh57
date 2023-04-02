@@ -48,6 +48,10 @@ public class HomeFragment extends Fragment {
     DoUong item;
 
     public static ArrayList<GioHang> listGioHang;
+    String name ="";
+    NhanVienDAO dao;
+    View headerView;
+    FloatingActionButton fabCart;
 
     @Nullable
     @Override
@@ -109,6 +113,7 @@ public class HomeFragment extends Fragment {
                 gv.setAdapter(adapter);
             }
         });
+
 
 
         return view;

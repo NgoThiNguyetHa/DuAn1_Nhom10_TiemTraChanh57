@@ -165,6 +165,34 @@ public class QuanLyNhanVienFragment extends Fragment {
     }
     public int validate(){
         int check = 1;
+        if (edHoTen.getText().toString().isEmpty() || edNamSinh.getText().toString().isEmpty() || edMatKhau.getText().toString().isEmpty() || edSDT.getText().toString().isEmpty()){
+            Toast.makeText(getContext(), "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+            check = -1;
+        }else {
+            try {
+                Integer.parseInt(edSDT.getText().toString().trim());
+                edSDT.setError(null);
+            }catch (Exception e){
+                edSDT.setError("Phải là số");
+                check = -1;
+            }
+            if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
+                edSDT.setError("Số điện thoại này đã tồn tại");
+                check = -1;
+            }
+            try {
+                Integer.parseInt(edNamSinh.getText().toString().trim());
+                edNamSinh.setError(null);
+            }catch (Exception e){
+                edNamSinh.setError("Phải là số");
+                check = -1;
+            }
+            if(!rdoNam.isChecked() && !rdoNu.isChecked()){
+                Toast.makeText(getContext(), "Vui lòng chọn giới tính", Toast.LENGTH_SHORT).show();
+                return check = -1;
+            }
+
+        }
         return check;
     }
 }
