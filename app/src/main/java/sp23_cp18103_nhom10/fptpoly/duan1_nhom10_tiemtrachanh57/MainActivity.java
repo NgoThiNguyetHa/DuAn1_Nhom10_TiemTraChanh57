@@ -20,7 +20,10 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDoUongFragment;
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private String mSDT="";
     ImageView imgCart;
     TextView tvTitle;
+
+    static NhanVienDAO nhanVienDAO;
+    static String sdt = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         bar.setHomeAsUpIndicator(R.drawable.ic_menu);
         bar.setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        String sdt = intent.getStringExtra("user");
+//        Intent intent = getIntent();
+//        String sdt = intent.getStringExtra("user");
 
         FragmentManager manager = getSupportFragmentManager();
         HomeFragment homeFragment = new HomeFragment();
@@ -102,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_Top10:
                         break;
                     case R.id.navHoaDon:
+                        tvTitle.setText("Quản lý hóa đơn");
+                        setTitle("Quản lý hóa đơn");
+                        QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyHoaDonFragment).commit();
+
                         break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");
@@ -127,6 +138,16 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getmSDT(){
+        int maNV=0;
+        Intent intent = getIntent();
+        sdt = intent.getStringExtra("user");
+//        nhanVienDAO = new NhanVienDAO();
+        NhanVien nv = nhanVienDAO.getSDT(sdt);
+        maNV = nv.getMaNV();
+        return maNV;
     }
 
 

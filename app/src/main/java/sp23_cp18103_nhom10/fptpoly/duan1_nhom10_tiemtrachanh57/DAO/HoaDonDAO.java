@@ -56,9 +56,7 @@ public class HoaDonDAO {
             obj.setMaKH(Integer.parseInt(c.getString(c.getColumnIndex("maKH"))));
             obj.setTongTien(Integer.parseInt(c.getString(c.getColumnIndex("tongTien"))));
             obj.setMaNV(Integer.parseInt(c.getString(c.getColumnIndex("maNV"))));
-            obj.setSoLuong(Integer.parseInt(c.getString(c.getColumnIndex("soLuong"))));
             obj.setTrangThai(Integer.parseInt(c.getString(c.getColumnIndex("trangThai"))));
-            obj.setTenKH(c.getString(c.getColumnIndex("tenKH")));
             try{
                 obj.setNgayXuat(sdf.parse(c.getString(c.getColumnIndex("ngayXuat"))));
             } catch (ParseException e) {
