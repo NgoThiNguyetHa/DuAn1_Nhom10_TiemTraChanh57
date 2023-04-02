@@ -45,6 +45,7 @@ public class QuanLyKhachHangFragment extends Fragment {
     AdapterQuanLyKhachHang adapterQuanLyKhachHang;
     KhachHang item;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

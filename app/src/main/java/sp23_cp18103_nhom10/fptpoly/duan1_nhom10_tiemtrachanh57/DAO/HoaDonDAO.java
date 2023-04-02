@@ -79,4 +79,11 @@ public class HoaDonDAO {
         List<HoaDon> list = getData(sql, id);
         return list.get(0);
     }
+
+    public HoaDon getHDLast(){
+        String sql = "SELECT * FROM hoaDon ORDER BY maHD DESC LIMIT 1";
+        List<HoaDon> list = getData(sql);
+        return list.get(0);
+    }
+
 }

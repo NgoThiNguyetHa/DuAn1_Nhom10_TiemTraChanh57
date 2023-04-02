@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
@@ -77,5 +78,10 @@ public class KhachHangDAO {
         List<KhachHang> list = getData(sql,id);
         return list.get(0);
 
+    }
+    public KhachHang getKHLast(){
+        String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";
+        List<KhachHang> list = getData(sql);
+        return list.get(0);
     }
 }
