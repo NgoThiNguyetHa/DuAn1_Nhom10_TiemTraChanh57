@@ -57,6 +57,7 @@ public class NhanVienDAO {
             obj.setGioiTinh(Integer.parseInt(c.getString(c.getColumnIndex("gioiTinh"))));
             obj.setNamSinh(c.getString(c.getColumnIndex("namSinh")));
             obj.setMatKhau(c.getString(c.getColumnIndex("matKhau")));
+            obj.setTrangThai(c.getInt(c.getColumnIndex("trangThai")));
             list.add(obj);
         }
         return list;
@@ -72,9 +73,22 @@ public class NhanVienDAO {
         List<NhanVien> list = getData(sql, id);
         return list.get(0);
     }
+    public NhanVien getSDT(String sdt){
+        String sql = "select * from nhanVien where sdt=?";
+        List<NhanVien> list = getData(sql, sdt);
+        return list.get(0);
+    }
     public int checkLogin(String user, String pass){
         String sql = "select * from NhanVien where sdt=? and matKhau=?";
         List<NhanVien> list = getData(sql, user, pass);
+        if(list.size() == 0){
+            return -1;
+        }
+        return 1;
+    }
+    public int checkSdt(String Sdt){
+        String sql = "select * from NhanVien where sdt=?";
+        List<NhanVien> list = getData(sql, Sdt);
         if(list.size() == 0){
             return -1;
         }

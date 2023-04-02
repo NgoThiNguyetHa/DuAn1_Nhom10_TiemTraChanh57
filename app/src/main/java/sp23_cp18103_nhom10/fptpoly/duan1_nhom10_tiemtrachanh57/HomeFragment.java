@@ -5,14 +5,27 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class MainActivity2 extends Fragment {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+
+public class HomeFragment extends Fragment {
+    TextView tvHi;
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
+    String name ="";
+    NhanVienDAO dao;
+    View headerView;
+    FloatingActionButton fabCart;
 
     @Nullable
     @Override
@@ -22,7 +35,6 @@ public class MainActivity2 extends Fragment {
         btnCoffee = view.findViewById(R.id.btnCoffee);
         btnSmoothie = view.findViewById(R.id.btnSmoothies);
         btnOther = view.findViewById(R.id.btnOther);
-
         return view;
     }
     

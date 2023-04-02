@@ -4,13 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <EditText
-        android:id="@+id/edMaNV"
+        android:id="@+id/edMaDoUong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mã nhân viên"
+        android:hint="Mã đồ uống"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
+    <Spinner
+        android:id="@+id/spnMaLoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,10 +25,10 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHoTen"
+            android:id="@+id/edTenDoUong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ tên"/>
+            android:hint="Tên đồ uống"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -30,62 +37,46 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edSDT"
+            android:id="@+id/edGia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="SĐT"/>
+            android:hint="Giá tiền"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edNamSinh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Năm sinh" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <RadioGroup
-        android:id="@+id/rdgGioiTinh"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-        <RadioButton
-            android:id="@+id/rdoNam"
+        android:layout_marginLeft="25dp">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nam"
-            android:layout_marginLeft="20dp"/>
-        <RadioButton
-            android:id="@+id/rdoNu"
+            android:text="Chọn ảnh"/>
+        <ImageView
+            android:id="@+id/imgCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nữ"
-            android:layout_marginLeft="20dp"/>
-    </RadioGroup>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edMatKhau"
-            android:layout_width="match_parent"
+            android:src="@drawable/ic_camera"
+            android:layout_marginLeft="15dp"/>
+        <ImageView
+            android:id="@+id/imgFile"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Mật khẩu" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:src="@drawable/ic_folder_upload"
+            android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imgAnh"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_image"
+        android:layout_gravity="center"/>
     <CheckBox
+        android:id="@+id/chkTrangThai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đi làm"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/chkTrangThai"/>
+        android:text="Còn hàng"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,7 +84,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
         <Button
-            android:id="@+id/btnLuuNhanVien"
+            android:id="@+id/btnLuuDoUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu"
@@ -101,7 +92,7 @@
             android:layout_weight="1"
             android:backgroundTint="#F89B4A"/>
         <Button
-            android:id="@+id/btnHuyNhanVien"
+            android:id="@+id/btnHuyDoUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"
