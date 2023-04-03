@@ -86,4 +86,12 @@ public class NhanVienDAO {
         }
         return 1;
     }
+    public int checkSdt(String Sdt){
+        String sql = "select * from NhanVien where sdt=?";
+        List<NhanVien> list = getData(sql, Sdt);
+        if(list.size() == 0){
+            return -1;
+        }
+        return 1;
+    }
 }

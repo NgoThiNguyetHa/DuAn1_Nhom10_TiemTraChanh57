@@ -7,7 +7,9 @@
         android:id="@+id/imgDatDoUong"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,14 +25,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Tên đồ uống"/>
-            <TextView
-                android:id="@+id/tvGiaSP"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#FD0000"
-                android:text="Giá sp"/>
+                android:text="Tên đồ uống"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tvGiaSP"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textColor="#FD0000"-->
+<!--                android:text="Giá sp"/>-->
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -46,7 +51,7 @@
                 android:textStyle="bold"
                 android:background="@drawable/add_backround"/>
             <TextView
-
+                android:id="@+id/tvSoLuong"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -67,9 +72,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginLeft="135dp"
+                android:layout_marginLeft="90dp"
                 android:textColor="#FD0000"
-                android:text="Tổng sp"/>
+                android:text="Tổng sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
