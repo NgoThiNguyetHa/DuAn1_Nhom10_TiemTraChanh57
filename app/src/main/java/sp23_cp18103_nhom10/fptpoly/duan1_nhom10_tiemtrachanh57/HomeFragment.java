@@ -26,6 +26,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -123,7 +124,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item = list.get(i);
-                openDialog(getActivity());
+                if (item.getTrangThai()==1){
+                    openDialog(getActivity());
+                }else {
+                    Toast.makeText(getContext(), "Đồ uống này đã hết, vui lòng chọn đồ uống khác!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
