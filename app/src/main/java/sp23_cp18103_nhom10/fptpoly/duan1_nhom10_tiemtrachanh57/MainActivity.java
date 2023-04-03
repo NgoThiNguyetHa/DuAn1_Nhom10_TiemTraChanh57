@@ -22,6 +22,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.BieuDoFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhThuFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
@@ -104,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
                         manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
+                        tvTitle.setText("Doanh thu");
+                        setTitle("Doanh thu");
+                        DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doanhThuFragment).commit();
                         break;
                     case R.id.nav_Top10:
                         break;
@@ -123,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_DangXuat:
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
+                        break;
+                    case R.id.nav_BieuDoDoanhThu:
+                        tvTitle.setText("Biểu đồ");
+                        setTitle("Biểu đồ");
+                        BieuDoFragment bieuDoFragment = new BieuDoFragment();
+                        manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
                         break;
                 }
                 drawerLayout.closeDrawers();
