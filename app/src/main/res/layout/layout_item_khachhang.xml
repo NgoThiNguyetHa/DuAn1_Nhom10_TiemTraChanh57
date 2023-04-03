@@ -13,7 +13,6 @@
             android:layout_height="wrap_content"
             android:text="Mã khách hàng"
             android:id="@+id/tvMaKhachHang"
-
             android:textSize="20dp"
             />
         <TextView
