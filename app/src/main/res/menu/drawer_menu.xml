@@ -25,6 +25,9 @@
             <item
                 android:id="@+id/nav_DoanhThu"
                 android:title="Doanh thu" />
+            <item
+                android:id="@+id/nav_BieuDoDoanhThu"
+                android:title="Biểu đồ doanh thu"/>
         </menu>
     </item>
     <item android:title="Người dùng">

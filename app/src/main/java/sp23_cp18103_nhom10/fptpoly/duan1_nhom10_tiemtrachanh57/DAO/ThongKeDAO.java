@@ -46,7 +46,7 @@ public class ThongKeDAO {
 
     @SuppressLint("Range")
     public int getDoanhThu(String tuNgay, String denNgay){
-        String sqlDoanhThu = "select sum(tongTien) as doanhThu from hoaDon where ngay between ? and ?";
+        String sqlDoanhThu = "select sum(tongTien) as doanhThu from hoaDon where ngayXuat between ? and ?";
         List<Integer> list = new ArrayList<>();
         Cursor c = db.rawQuery(sqlDoanhThu, new String[]{tuNgay,denNgay});
         while (c.moveToNext()){
