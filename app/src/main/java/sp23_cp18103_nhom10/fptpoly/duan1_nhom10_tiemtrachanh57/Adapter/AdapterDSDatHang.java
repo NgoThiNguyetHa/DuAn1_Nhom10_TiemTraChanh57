@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DoUongDAO;
@@ -55,9 +56,10 @@ public class AdapterDSDatHang extends ArrayAdapter {
             DoUong doUong = doUongDAO.getID(String.valueOf(item.getMaDoUong()));
             tvTenDoUong.setText(""+doUong.getTenDoUong());
 
+            DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
             tvSoLuong.setText(""+item.getSoLuong());
-            tvGiaTien.setText(""+doUong.getGiaTien());
-            tvTongTien.setText(""+item.getTongTien());
+            tvGiaTien.setText(""+decimalFormat.format(doUong.getGiaTien()));
+            tvTongTien.setText(""+decimalFormat.format(item.getTongTien()));
 
 
         }

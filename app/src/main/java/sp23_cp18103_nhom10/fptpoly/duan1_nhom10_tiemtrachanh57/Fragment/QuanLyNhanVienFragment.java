@@ -64,7 +64,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item = list.get(i);
-                openDialog(getActivity(), 1);
+                openDialog(getActivity(), 2);
                 return false;
             }
         });

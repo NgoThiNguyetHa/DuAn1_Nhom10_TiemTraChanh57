@@ -39,7 +39,7 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
         this.list =list;
         this.fragment = fragment;
     }
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -69,7 +69,7 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
 
             tvTongTien.setText("Tổng tiền: " + item.getTongTien()+" VND");
 
-            tvNgayXuat.setText("Ngày xuất: " + item.getNgayXuat());
+            tvNgayXuat.setText("Ngày xuất: " + sdf.format(item.getNgayXuat()) );
 
             if(item.getTrangThai() == 1){
                 tvTrangThai.setText("Đã thanh toán");
