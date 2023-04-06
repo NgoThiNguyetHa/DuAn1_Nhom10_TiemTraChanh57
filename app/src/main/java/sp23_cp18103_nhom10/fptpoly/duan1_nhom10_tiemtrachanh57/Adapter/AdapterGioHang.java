@@ -98,7 +98,7 @@ public class AdapterGioHang extends BaseAdapter {
                 HomeFragment.listGioHang.get(position).setSoLuong(soLuongMoi);
                 int giaMoi = (giaHT*soLuongMoi)/soLuongHT;
                 HomeFragment.listGioHang.get(position).setTongTien(giaMoi);
-                finalViewHolder.tvTongTien.setText(giaMoi+" VND");
+                finalViewHolder.tvTongTien.setText(decimalFormat.format(giaMoi)+" VND");
                 GioHangFragment.tinhTong();
                 if (soLuongMoi > 9){
                     finalViewHolder.tvCong.setVisibility(v.INVISIBLE);
@@ -121,7 +121,7 @@ public class AdapterGioHang extends BaseAdapter {
                 HomeFragment.listGioHang.get(position).setSoLuong(soLuongMoi);
                 int giaMoi = (giaHT*soLuongMoi)/soLuongHT;
                 HomeFragment.listGioHang.get(position).setTongTien(giaMoi);
-                finalViewHolder.tvTongTien.setText(giaMoi+" VND");
+                finalViewHolder.tvTongTien.setText(decimalFormat.format(giaMoi)+" VND");
                 GioHangFragment.tinhTong();
                 if (soLuongMoi < 2){
                     finalViewHolder.tvCong.setVisibility(v.VISIBLE);

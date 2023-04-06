@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoanhThu;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.Top10;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
@@ -52,5 +53,23 @@ public class ThongKeDAO {
             }
         }
         return list.get(0);
+    }
+
+    @SuppressLint("Range")
+    public List<DoanhThu> getBieuDo(){
+        String sqlDoanhThu = "select strftime('%m', ngayXuat) as thang, sum(tongTien) as doanhThu from hoaDon GROUP by strftime('%m', ngayXuat)";
+        List<DoanhThu> list = new ArrayList<>();
+        Cursor c = db.rawQuery(sqlDoanhThu,null);
+        while (c.moveToNext()){
+            try{
+                DoanhThu doanhThu = new DoanhThu();
+                doanhThu.setThang(Integer.parseInt(c.getString(c.getColumnIndex("thang"))));
+                doanhThu.setTongTien(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
+                list.add(doanhThu);
+            } catch (NumberFormatException e) {
+                list.add(new DoanhThu(0,0));
+            }
+        }
+        return list;
     }
 }

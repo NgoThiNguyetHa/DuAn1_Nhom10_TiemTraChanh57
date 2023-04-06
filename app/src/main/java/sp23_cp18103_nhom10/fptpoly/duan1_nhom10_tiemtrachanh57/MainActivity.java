@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTitle;
 
     static NhanVienDAO nhanVienDAO;
-    static String sdt = "";
+//    static String sdt = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +60,14 @@ public class MainActivity extends AppCompatActivity {
         bar.setHomeAsUpIndicator(R.drawable.ic_menu);
         bar.setDisplayHomeAsUpEnabled(true);
 
-//        Intent intent = getIntent();
-//        String sdt = intent.getStringExtra("user");
+        Intent intent = getIntent();
+        String sdt = intent.getStringExtra("user");
+
+        if (sdt.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.nav_DoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_BieuDoDoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.navNhanVien).setVisible(true);
+        }
 
         FragmentManager manager = getSupportFragmentManager();
         HomeFragment homeFragment = new HomeFragment();
@@ -152,15 +158,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int getmSDT(){
-        int maNV=0;
-        Intent intent = getIntent();
-        sdt = intent.getStringExtra("user");
-//        nhanVienDAO = new NhanVienDAO();
-        NhanVien nv = nhanVienDAO.getSDT(sdt);
-        maNV = nv.getMaNV();
-        return maNV;
-    }
+//    public int getmSDT(){
+//        int maNV=0;
+//        Intent intent = getIntent();
+//        sdt = intent.getStringExtra("user");
+////        nhanVienDAO = new NhanVienDAO();
+//        NhanVien nv = nhanVienDAO.getSDT(sdt);
+//        maNV = nv.getMaNV();
+//        return maNV;
+//    }
 
 
 }

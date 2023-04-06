@@ -6,20 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.LineChart;
-
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +25,14 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoanhThu;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
-public class BieuDoFragment extends Fragment  {
+public class DoanhSoFragment extends Fragment  {
     LineChart lineChart;
     ArrayList<DoanhThu> list;
     @Nullable
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_bieu_do_fragment, container, false);
-        lineChart = view.findViewById(R.id.lineChart);
+        View view = inflater.inflate(R.layout.layout_doanh_so_fragment, container, false);
+        lineChart = view.findViewById(R.id.lineChartDoanhSo);
 
         LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();

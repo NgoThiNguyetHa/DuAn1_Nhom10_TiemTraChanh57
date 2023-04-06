@@ -123,7 +123,7 @@ public class HomeFragment extends Fragment {
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                item = list.get(i);
+                item = listAll.get(i);
                 if (item.getTrangThai()==1){
                     openDialog(getActivity());
                 }else {
