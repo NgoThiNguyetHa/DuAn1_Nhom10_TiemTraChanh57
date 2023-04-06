@@ -34,7 +34,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 public class QuanLyKhachHangFragment extends Fragment {
     ListView lvKhachHang;
     ArrayList<KhachHang> list;
-    FloatingActionButton fabKhachHang;
+//    FloatingActionButton fabKhachHang;
     Dialog dialog;
     EditText edMaKhachHang, edHoTenKhachHang, edSDTKhachHang, edNamSinhKhachHang;
     RadioButton rdoNamKH, rdoNuKH;
@@ -45,22 +45,23 @@ public class QuanLyKhachHangFragment extends Fragment {
     AdapterQuanLyKhachHang adapterQuanLyKhachHang;
     KhachHang item;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_khachhang, null);
         lvKhachHang = view.findViewById(R.id.lvKhachHang);
-        fabKhachHang = view.findViewById(R.id.fabKhachHang);
+//        fabKhachHang = view.findViewById(R.id.fabKhachHang);
         dao = new KhachHangDAO(getActivity());
         capNhapLV();
 
 
-        fabKhachHang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog(getActivity(),0);
-            }
-        });
+//        fabKhachHang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openDialog(getActivity(),0);
+//            }
+//        });
         lvKhachHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,17 +73,15 @@ public class QuanLyKhachHangFragment extends Fragment {
         return view;
 
     }
-    public  void openDialog(final Context context,final int type) {
+    public void openDialog(final Context context,final int type) {
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_khachhang);
+        dialog.setContentView(R.layout.dialog_sua_khachhang);
         //dialog khach hàng
-
 
         edMaKhachHang = dialog.findViewById(R.id.edMaKhachHang);
         edHoTenKhachHang = dialog.findViewById(R.id.edHoTenKhachHang);
         edSDTKhachHang = dialog.findViewById(R.id.edSDTKhachHang);
         edNamSinhKhachHang = dialog.findViewById(R.id.edNamSinhKhachHang);
-
 
         btnLuuKhachHang = dialog.findViewById(R.id.btnLuuKhachHang);
         btnHuyKhachHang = dialog.findViewById(R.id.btnHuyKhachHang);
@@ -159,6 +158,30 @@ public class QuanLyKhachHangFragment extends Fragment {
     }
     public int validate(){
         int check = 1;
+        if (edHoTenKhachHang.getText().toString().isEmpty() || edNamSinhKhachHang.getText().toString().isEmpty() || edSDTKhachHang.getText().toString().isEmpty()){
+            Toast.makeText(getContext(), "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+            check = -1;
+        }else {
+            try {
+                Integer.parseInt(edNamSinhKhachHang.getText().toString().trim());
+                edNamSinhKhachHang.setError(null);
+            }catch (Exception e){
+                edNamSinhKhachHang.setError("Phải là số");
+                check = -1;
+            }
+            try {
+                Integer.parseInt(edSDTKhachHang.getText().toString().trim());
+                edSDTKhachHang.setError(null);
+            }catch (Exception e){
+                edSDTKhachHang.setError("Phải là số");
+                check = -1;
+            }
+            if(!rdoNamKH.isChecked() && !rdoNuKH.isChecked()){
+                Toast.makeText(getContext(), "Vui lòng chọn giới tính", Toast.LENGTH_SHORT).show();
+                return check = -1;
+            }
+        }
         return check;
     }
 }
+

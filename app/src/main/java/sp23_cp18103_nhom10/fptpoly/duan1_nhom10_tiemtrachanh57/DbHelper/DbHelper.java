@@ -45,12 +45,10 @@ public class DbHelper extends SQLiteOpenHelper {
         String tableHoaDon = "create table hoaDon(maHD integer primary key autoincrement ," +
                 "maKH integer references khachHang(maKH)," +
                 "maNV integer references nhanVien(maNV) ," +
-                "soLuong integer not null," +
                 "trangThai integer not null," +
-                "tenKH text not null," +
                 "ngayXuat date not null," +
                 "tongTien integer not null)";
-                ;
+
         sqLiteDatabase.execSQL(tableHoaDon);
 
         String tableNhanVien = "create table nhanVien(maNV integer primary key autoincrement ," +

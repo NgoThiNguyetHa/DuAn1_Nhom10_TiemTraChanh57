@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
 public class KhachHangDAO {
@@ -28,6 +30,17 @@ public class KhachHangDAO {
         values.put("gioiTinh", obj.getGioiTinh());
         return db.insert("khachHang", null, values);
     }
+//    public long insertKH(KhachHang obj){
+//        String sql = "select maKH from khachHang";
+//        ContentValues values = new ContentValues();
+//        values.put("hoTen", obj.getHoTen());
+//        values.put("sdt", obj.getSdt());
+//        values.put("namSinh", obj.getNamSinh());
+//        values.put("gioiTinh", obj.getGioiTinh());
+//        if (db.insert("khachHang", null, values) >0){
+//            return db.insert("khachHang", null, values);
+//        }
+//    }
     public int updateKhachHang(KhachHang obj){
         ContentValues values = new ContentValues();
         values.put("hoTen", obj.getHoTen());
@@ -66,5 +79,23 @@ public class KhachHangDAO {
         List<KhachHang> list = getData(sql,id);
         return list.get(0);
 
+    }
+    public KhachHang getKHLast(){
+        String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";
+        List<KhachHang> list = getData(sql);
+        return list.get(0);
+    }
+    public int checkSdt(String Sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql, Sdt);
+        if(list.size() == 0){
+            return -1;
+        }
+        return 1;
+    }
+    public KhachHang getSDT(String sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql,sdt);
+        return list.get(0);
     }
 }
