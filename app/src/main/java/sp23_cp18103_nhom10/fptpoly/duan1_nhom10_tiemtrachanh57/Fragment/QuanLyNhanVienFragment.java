@@ -2,8 +2,10 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +21,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyNhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoanhThu;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
@@ -66,6 +78,13 @@ public class QuanLyNhanVienFragment extends Fragment {
                 item = list.get(i);
                 openDialog(getActivity(), 2);
                 return false;
+            }
+        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                item = list.get(position);
+                bieuDoDoanhSo(getContext());
             }
         });
 
@@ -194,5 +213,46 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         }
         return check;
+    }
+
+    private void bieuDoDoanhSo(final Context context){
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.layout_doanh_so_fragment);
+        LineChart lineChart = dialog.findViewById(R.id.lineChartDoanhSo);
+
+        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
+        LineData data = new LineData(lineDataSet);
+        lineChart.setData(data);
+
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1.0f);
+
+        lineDataSet.setColors( Color.RED);
+        lineDataSet.setValueTextColor(Color.BLACK);
+        lineDataSet.setValueTextSize(18f);
+
+        lineChart.invalidate(); //refesh
+
+        dialog.show();
+    }
+    private List<Entry> dataValues() {
+        ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
+        List<DoanhThu> list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(item.getMaNV()));
+
+        List<Entry> dataValue = new ArrayList<>();
+        dataValue.add(new Entry(0,0));
+
+        for (int i=0; i<list.size(); i++){
+            int thang = list.get(i).getThang();
+            int tongTien = list.get(i).getTongTien();
+            dataValue.add(new Entry(list.get(i).getThang(), list.get(i).getTongTien()));
+            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
+        }
+
+
+        return dataValue;
     }
 }

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.LineChart;
 
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -37,13 +38,17 @@ public class BieuDoFragment extends Fragment  {
         View view = inflater.inflate(R.layout.layout_bieu_do_fragment, container, false);
         lineChart = view.findViewById(R.id.lineChart);
 
-        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
+        LineDataSet lineDataSet = new LineDataSet(dataValues(),"Doanh thu");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);
 
-        lineDataSet.setColors( ColorTemplate.JOYFUL_COLORS);
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1.0f);
+
+        lineDataSet.setColors( Color.RED);
         lineDataSet.setValueTextColor(Color.BLACK);
         lineDataSet.setValueTextSize(18f);
 
