@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 
 public class ManHinhDangNhap extends AppCompatActivity {
@@ -54,15 +55,21 @@ public class ManHinhDangNhap extends AppCompatActivity {
                     edPasswordT.setError("Mật khẩu không được để trống");
                 }else{
                     if(dao.checkLogin(SDT , matKhau) > 0){
-                        Toast.makeText(ManHinhDangNhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                        rememberSDT(SDT , matKhau , ckLuuMatKhau.isChecked());
-                        Intent intent = new Intent(getApplicationContext() , MainActivity.class);
-                        intent.putExtra("user" , SDT);
+                        NhanVien nv = dao.getLogin(SDT, matKhau);
+                        if (nv.getTrangThai() == 1){
+                            Toast.makeText(ManHinhDangNhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            rememberSDT(SDT , matKhau , ckLuuMatKhau.isChecked());
+                            Intent intent = new Intent(getApplicationContext() , MainActivity.class);
+                            intent.putExtra("user" , SDT);
 
-                        startActivity(intent);
-                        finish();
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(ManHinhDangNhap.this, "Tài khoản này đã bị vô hiệu hóa", Toast.LENGTH_SHORT).show();
+                        }
+
                     }else{
-                        Toast.makeText(ManHinhDangNhap.this, "Số điện thoại mà mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManHinhDangNhap.this, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

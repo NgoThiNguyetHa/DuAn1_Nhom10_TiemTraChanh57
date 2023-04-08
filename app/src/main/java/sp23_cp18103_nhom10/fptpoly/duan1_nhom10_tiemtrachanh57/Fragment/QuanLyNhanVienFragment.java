@@ -217,8 +217,9 @@ public class QuanLyNhanVienFragment extends Fragment {
 
     private void bieuDoDoanhSo(final Context context){
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.layout_doanh_so_fragment);
+        dialog.setContentView(R.layout.dialog_doanh_so);
         LineChart lineChart = dialog.findViewById(R.id.lineChartDoanhSo);
+        dialog.setTitle("Doanh số của "+item.getHoTen());
 
         LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -232,7 +233,7 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         lineDataSet.setColors( Color.RED);
         lineDataSet.setValueTextColor(Color.BLACK);
-        lineDataSet.setValueTextSize(18f);
+        lineDataSet.setValueTextSize(10f);
 
         lineChart.invalidate(); //refesh
 
