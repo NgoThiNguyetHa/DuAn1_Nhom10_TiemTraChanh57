@@ -38,6 +38,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQu
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.GridViewAdapter;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DoUongDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.GioHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
@@ -71,6 +72,7 @@ public class HomeFragment extends Fragment {
         tv_entry = view.findViewById(R.id.tv_entry);
         listAll = new ArrayList<>();
         dao = new DoUongDAO(getActivity());
+
         if(dao.getLoai("1").size() != 0) {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
             //get nhu
@@ -119,7 +121,9 @@ public class HomeFragment extends Fragment {
         }
 
 
-
+        listAll = (ArrayList<DoUong>) dao.getTop10();
+        adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+        gv.setAdapter(adapter);
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
