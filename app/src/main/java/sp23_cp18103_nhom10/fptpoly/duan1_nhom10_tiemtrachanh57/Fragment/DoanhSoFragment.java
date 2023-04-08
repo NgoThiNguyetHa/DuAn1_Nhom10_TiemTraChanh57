@@ -1,5 +1,7 @@
 package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -21,8 +24,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoanhThu;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
 public class DoanhSoFragment extends Fragment  {
@@ -40,7 +45,11 @@ public class DoanhSoFragment extends Fragment  {
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);
 
-        lineDataSet.setColors( ColorTemplate.JOYFUL_COLORS);
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1.0f);
+
+        lineDataSet.setColors( Color.RED);
         lineDataSet.setValueTextColor(Color.BLACK);
         lineDataSet.setValueTextSize(18f);
 
@@ -49,8 +58,13 @@ public class DoanhSoFragment extends Fragment  {
     }
 
     private List<Entry> dataValues() {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        String sdt = sharedPreferences.getString("SDT", "");
+        NhanVienDAO nhanVienDAO = new NhanVienDAO(getContext());
+        NhanVien nhanVien = nhanVienDAO.getSDT(sdt);
+
         ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
-        list = (ArrayList<DoanhThu>) thongKeDAO.getBieuDo();
+        list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(nhanVien.getMaNV()));
 
         List<Entry> dataValue = new ArrayList<>();
         dataValue.add(new Entry(0,0));

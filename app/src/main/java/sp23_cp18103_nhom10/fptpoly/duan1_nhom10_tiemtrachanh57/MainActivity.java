@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.BieuDoFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhSoFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhThuFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             navigationView.getMenu().findItem(R.id.nav_DoanhThu).setVisible(true);
             navigationView.getMenu().findItem(R.id.nav_BieuDoDoanhThu).setVisible(true);
             navigationView.getMenu().findItem(R.id.navNhanVien).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_DoanhSoNhanVien).setVisible(false);
         }
 
         FragmentManager manager = getSupportFragmentManager();
@@ -146,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
                         setTitle("Biểu đồ");
                         BieuDoFragment bieuDoFragment = new BieuDoFragment();
                         manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
+                        break;
+                    case R.id.nav_DoanhSoNhanVien:
+                        tvTitle.setText("Doanh số");
+                        setTitle("Doanh số");
+                        DoanhSoFragment doanhSoFragment = new DoanhSoFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doanhSoFragment).commit();
                         break;
                 }
                 drawerLayout.closeDrawers();

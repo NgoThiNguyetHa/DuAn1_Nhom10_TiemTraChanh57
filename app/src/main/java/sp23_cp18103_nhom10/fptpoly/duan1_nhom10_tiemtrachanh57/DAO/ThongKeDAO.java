@@ -107,5 +107,21 @@ public class ThongKeDAO {
         return list;
     }
 
-
+    @SuppressLint("Range")
+    public List<DoanhThu> getDoanhSoNV( String maNV){
+        String sqlDoanhThu = "select strftime('%m', ngayXuat) as thang, sum(tongTien) as doanhThu from hoaDon WHERE maNV=? GROUP by strftime('%m', ngayXuat)";
+        List<DoanhThu> list = new ArrayList<>();
+        Cursor c = db.rawQuery(sqlDoanhThu,new String[]{maNV});
+        while (c.moveToNext()){
+            try{
+                DoanhThu doanhThu = new DoanhThu();
+                doanhThu.setThang(Integer.parseInt(c.getString(c.getColumnIndex("thang"))));
+                doanhThu.setTongTien(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
+                list.add(doanhThu);
+            } catch (NumberFormatException e) {
+                list.add(new DoanhThu(0,0));
+            }
+        }
+        return list;
+    }
 }
