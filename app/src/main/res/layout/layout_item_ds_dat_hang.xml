@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="số lượng"
         android:layout_weight="0.5"
+        android:gravity="center"
         android:textColor="@color/black"/>
     <TextView
         android:id="@+id/tvGiaTien"
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="giaTien"
         android:layout_weight="1"
+        android:gravity="center"
         android:textColor="@color/black"/>
     <TextView
         android:id="@+id/tvTongTien"
@@ -30,5 +32,6 @@
         android:layout_height="wrap_content"
         android:text="tongTien"
         android:layout_weight="1"
+        android:gravity="center"
         android:textColor="@color/black"/>
 </LinearLayout>
