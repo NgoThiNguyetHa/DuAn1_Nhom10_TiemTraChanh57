@@ -245,7 +245,7 @@ public class QuanLyNhanVienFragment extends Fragment {
         lineDataSet.setValueTextColor(Color.BLACK);
         lineDataSet.setValueTextSize(10f);
 
-        lineChart.invalidate(); //refesh
+        lineChart.invalidate();
 
         builder.show();
     }
