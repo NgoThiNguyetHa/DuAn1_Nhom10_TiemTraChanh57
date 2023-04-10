@@ -84,7 +84,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 item = list.get(position);
-                bieuDoDoanhSo(getContext());
+//                bieuDoDoanhSo(getContext());
             }
         });
 
@@ -215,30 +215,30 @@ public class QuanLyNhanVienFragment extends Fragment {
         return check;
     }
 
-    private void bieuDoDoanhSo(final Context context){
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_doanh_so);
-        LineChart lineChart = dialog.findViewById(R.id.lineChartDoanhSo);
-        dialog.setTitle("Doanh số của "+item.getHoTen());
-
-        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(lineDataSet);
-        LineData data = new LineData(lineDataSet);
-        lineChart.setData(data);
-
-        lineChart.getAxisRight().setEnabled(false);
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        lineChart.getXAxis().setGranularity(1.0f);
-
-        lineDataSet.setColors( Color.RED);
-        lineDataSet.setValueTextColor(Color.BLACK);
-        lineDataSet.setValueTextSize(10f);
-
-        lineChart.invalidate(); //refesh
-
-        dialog.show();
-    }
+//    private void bieuDoDoanhSo(final Context context){
+//        dialog = new Dialog(context);
+//        dialog.setContentView(R.layout.dialog_doanh_so);
+//        LineChart lineChart = dialog.findViewById(R.id.lineChartDoanhSo);
+//        dialog.setTitle("Doanh số của "+item.getHoTen());
+//
+//        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
+//        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+//        dataSets.add(lineDataSet);
+//        LineData data = new LineData(lineDataSet);
+//        lineChart.setData(data);
+//
+//        lineChart.getAxisRight().setEnabled(false);
+//        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+//        lineChart.getXAxis().setGranularity(1.0f);
+//
+//        lineDataSet.setColors( Color.RED);
+//        lineDataSet.setValueTextColor(Color.BLACK);
+//        lineDataSet.setValueTextSize(10f);
+//
+//        lineChart.invalidate(); //refesh
+//
+//        dialog.show();
+//    }
     private List<Entry> dataValues() {
         ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
         List<DoanhThu> list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(item.getMaNV()));
