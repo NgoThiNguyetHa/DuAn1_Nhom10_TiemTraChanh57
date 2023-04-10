@@ -39,7 +39,7 @@ public class DoanhSoFragment extends Fragment  {
         View view = inflater.inflate(R.layout.layout_doanh_so_fragment, container, false);
         lineChart = view.findViewById(R.id.lineChartDoanhSo);
 
-        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
+        LineDataSet lineDataSet = new LineDataSet(dataValues(),"Doanh số");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
         LineData data = new LineData(lineDataSet);
