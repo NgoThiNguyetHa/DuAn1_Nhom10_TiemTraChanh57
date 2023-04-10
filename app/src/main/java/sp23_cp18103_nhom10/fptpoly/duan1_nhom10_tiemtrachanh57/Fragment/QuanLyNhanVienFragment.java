@@ -260,7 +260,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             int thang = list.get(i).getThang();
             int tongTien = list.get(i).getTongTien();
             dataValue.add(new Entry(list.get(i).getThang(), list.get(i).getTongTien()));
-            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
+//            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
         }
 
 
