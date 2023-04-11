@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
@@ -50,7 +51,8 @@ public class QuanLyDoUongAdapter extends ArrayAdapter<DoUong> {
             imgAnh = view.findViewById(R.id.imgDoUong);
 
             tvTenDoUong.setText(item.getTenDoUong());
-            tvGia.setText(item.getGiaTien()+" VND");
+            DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+            tvGia.setText(decimalFormat.format(item.getGiaTien())+" VND");
             if (item.getTrangThai() == 1){
                 tvTrangThai.setText("Còn hàng");
             }else {

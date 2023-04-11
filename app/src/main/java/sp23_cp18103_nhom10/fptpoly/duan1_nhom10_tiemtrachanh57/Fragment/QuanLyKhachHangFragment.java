@@ -34,7 +34,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 public class QuanLyKhachHangFragment extends Fragment {
     ListView lvKhachHang;
     ArrayList<KhachHang> list;
-    FloatingActionButton fabKhachHang;
+//    FloatingActionButton fabKhachHang;
     Dialog dialog;
     EditText edMaKhachHang, edHoTenKhachHang, edSDTKhachHang, edNamSinhKhachHang;
     RadioButton rdoNamKH, rdoNuKH;
@@ -51,17 +51,17 @@ public class QuanLyKhachHangFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_khachhang, null);
         lvKhachHang = view.findViewById(R.id.lvKhachHang);
-        fabKhachHang = view.findViewById(R.id.fabKhachHang);
+//        fabKhachHang = view.findViewById(R.id.fabKhachHang);
         dao = new KhachHangDAO(getActivity());
         capNhapLV();
 
 
-        fabKhachHang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog(getActivity(),0);
-            }
-        });
+//        fabKhachHang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openDialog(getActivity(),0);
+//            }
+//        });
         lvKhachHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,7 +75,7 @@ public class QuanLyKhachHangFragment extends Fragment {
     }
     public void openDialog(final Context context,final int type) {
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_khachhang);
+        dialog.setContentView(R.layout.dialog_sua_khachhang);
         //dialog khach hàng
 
         edMaKhachHang = dialog.findViewById(R.id.edMaKhachHang);
@@ -184,3 +184,4 @@ public class QuanLyKhachHangFragment extends Fragment {
         return check;
     }
 }
+

@@ -20,13 +20,20 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.BieuDoFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhSoFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhThuFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyDoUongFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoiMatKhauFragment;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.Top10Fragment;
 
 public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
@@ -35,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private String mSDT="";
     ImageView imgCart;
     TextView tvTitle;
+
+    static NhanVienDAO nhanVienDAO;
+//    static String sdt = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String sdt = intent.getStringExtra("user");
+
+        if (sdt.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.nav_DoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_BieuDoDoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.navNhanVien).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_DoanhSoNhanVien).setVisible(false);
+        }
 
         FragmentManager manager = getSupportFragmentManager();
         HomeFragment homeFragment = new HomeFragment();
@@ -98,10 +115,23 @@ public class MainActivity extends AppCompatActivity {
                         manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
+                        tvTitle.setText("Doanh thu");
+                        setTitle("Doanh thu");
+                        DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doanhThuFragment).commit();
                         break;
                     case R.id.nav_Top10:
+                        tvTitle.setText("Top 10 đồ uống ");
+                        setTitle("Quản lý đồ uống");
+                        Top10Fragment top10Fragment = new Top10Fragment();
+                        manager.beginTransaction().replace(R.id.flContent, top10Fragment).commit();
                         break;
                     case R.id.navHoaDon:
+                        tvTitle.setText("Quản lý hóa đơn");
+                        setTitle("Quản lý hóa đơn");
+                        QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyHoaDonFragment).commit();
+
                         break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");
@@ -112,6 +142,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_DangXuat:
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
+                        break;
+                    case R.id.nav_BieuDoDoanhThu:
+                        tvTitle.setText("Biểu đồ");
+                        setTitle("Biểu đồ");
+                        BieuDoFragment bieuDoFragment = new BieuDoFragment();
+                        manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
+                        break;
+                    case R.id.nav_DoanhSoNhanVien:
+                        tvTitle.setText("Doanh số");
+                        setTitle("Doanh số");
+                        DoanhSoFragment doanhSoFragment = new DoanhSoFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doanhSoFragment).commit();
                         break;
                 }
                 drawerLayout.closeDrawers();
@@ -128,6 +170,16 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+//    public int getmSDT(){
+//        int maNV=0;
+//        Intent intent = getIntent();
+//        sdt = intent.getStringExtra("user");
+////        nhanVienDAO = new NhanVienDAO();
+//        NhanVien nv = nhanVienDAO.getSDT(sdt);
+//        maNV = nv.getMaNV();
+//        return maNV;
+//    }
 
 
 }

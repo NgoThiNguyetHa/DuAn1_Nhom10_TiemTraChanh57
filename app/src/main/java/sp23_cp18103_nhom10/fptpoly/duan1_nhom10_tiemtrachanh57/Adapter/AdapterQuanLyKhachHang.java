@@ -62,9 +62,9 @@ public class AdapterQuanLyKhachHang extends ArrayAdapter {
             tvGioiTinhKhachHang.setText("Giới tính: "+item.getGioiTinh());
 
             if(item.getGioiTinh() == 1){
-                tvGioiTinhKhachHang.setText("Giới tính : Nam " );
+                tvGioiTinhKhachHang.setText("Giới tính: Nam " );
             }else{
-                tvGioiTinhKhachHang.setText("Giới tính : Nữ " );
+                tvGioiTinhKhachHang.setText("Giới tính: Nữ " );
             }
 
         }

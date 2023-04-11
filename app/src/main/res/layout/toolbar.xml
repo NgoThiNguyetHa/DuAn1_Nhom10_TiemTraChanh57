@@ -16,7 +16,6 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Tiệm trà chanh 57"/>
-
         <ImageView
             android:id="@+id/imgCart"
             android:layout_width="wrap_content"

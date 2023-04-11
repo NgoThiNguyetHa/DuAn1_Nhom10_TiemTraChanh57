@@ -11,6 +11,7 @@ import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
 public class KhachHangDAO {
@@ -82,6 +83,19 @@ public class KhachHangDAO {
     public KhachHang getKHLast(){
         String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";
         List<KhachHang> list = getData(sql);
+        return list.get(0);
+    }
+    public int checkSdt(String Sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql, Sdt);
+        if(list.size() == 0){
+            return -1;
+        }
+        return 1;
+    }
+    public KhachHang getSDT(String sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql,sdt);
         return list.get(0);
     }
 }

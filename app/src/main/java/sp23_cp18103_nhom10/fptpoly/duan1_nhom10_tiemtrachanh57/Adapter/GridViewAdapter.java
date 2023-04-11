@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,8 @@ public class GridViewAdapter extends BaseAdapter implements Filterable {
         imgAnh.setImageBitmap(bitmap);
 
         tvTenDoUong.setText(item.getTenDoUong());
-        tvGia.setText(item.getGiaTien()+" VND");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+        tvGia.setText(decimalFormat.format(item.getGiaTien())+" VND");
 
 //        tvAddToCart.setOnClickListener(new View.OnClickListener() {
 //            @Override

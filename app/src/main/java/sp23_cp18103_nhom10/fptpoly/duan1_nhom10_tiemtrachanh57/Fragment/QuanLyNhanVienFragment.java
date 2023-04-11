@@ -2,8 +2,11 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +22,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyNhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoanhThu;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
@@ -69,6 +82,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             }
         });
 
+
         return view;
     }
     public void openDialog(final Context context , final int type) {
@@ -94,9 +108,9 @@ public class QuanLyNhanVienFragment extends Fragment {
         edMaNV.setEnabled(false);
 
         if (type != 0) {
-            edSDT.setText(item.getSdt());
+            edSDT.setText(item.getSdt()+"");
             edMaNV.setText(String.valueOf(item.getMaNV()));
-            edNamSinh.setText(item.getNamSinh());
+            edNamSinh.setText(item.getNamSinh()+"");
             edMatKhau.setText(item.getMatKhau());
             edHoTen.setText(item.getHoTen());
             if (item.getGioiTinh() == 1) {
@@ -137,15 +151,22 @@ public class QuanLyNhanVienFragment extends Fragment {
                 }
                 if (validate() > 0) {
                     if (type == 0) {
-                        if (dao.insertNhanVien(item) > 0) {
-                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
+                            edSDT.setError("Số điện thoại này đã tồn tại");
+                            return;
+                        }else {
+                            if (dao.insertNhanVien(item) > 0) {
+                                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                            }
                         }
+
                     } else {
                         item.setMaNV(Integer.parseInt(edMaNV.getText().toString()));
                         if (dao.updateNhanVien(item) > 0) {
                             Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+
                         } else {
                             Toast.makeText(context, "Sửa không thành công", Toast.LENGTH_SHORT).show();
                         }
@@ -153,6 +174,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                     capNhapLv();
                     dialog.dismiss();
                 }
+
             }
 
         });
@@ -176,10 +198,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                 edSDT.setError("Phải là số");
                 check = -1;
             }
-            if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
-                edSDT.setError("Số điện thoại này đã tồn tại");
-                check = -1;
-            }
+
             try {
                 Integer.parseInt(edNamSinh.getText().toString().trim());
                 edNamSinh.setError(null);
@@ -194,5 +213,57 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         }
         return check;
+    }
+
+    public void bieuDoDoanhSo(final Context context, NhanVien item){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_doanh_so, null);
+        builder.setView(view);
+
+        builder.setNegativeButton("HỦY", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        LineChart lineChart = view.findViewById(R.id.lineChartDoanhSo);
+        builder.setTitle("Doanh số của "+item.getHoTen());
+
+        LineDataSet lineDataSet = new LineDataSet(dataValues(item),"Doanh số");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
+        LineData data = new LineData(lineDataSet);
+        lineChart.setData(data);
+
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1.0f);
+
+        lineDataSet.setColors( Color.RED);
+        lineDataSet.setValueTextColor(Color.BLACK);
+        lineDataSet.setValueTextSize(10f);
+
+        lineChart.invalidate();
+
+        builder.show();
+    }
+    private List<Entry> dataValues(NhanVien item) {
+        ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
+        List<DoanhThu> list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(item.getMaNV()));
+
+        List<Entry> dataValue = new ArrayList<>();
+        dataValue.add(new Entry(0,0));
+
+        for (int i=0; i<list.size(); i++){
+            int thang = list.get(i).getThang();
+            int tongTien = list.get(i).getTongTien();
+            dataValue.add(new Entry(list.get(i).getThang(), list.get(i).getTongTien()));
+//            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
+        }
+
+
+        return dataValue;
     }
 }

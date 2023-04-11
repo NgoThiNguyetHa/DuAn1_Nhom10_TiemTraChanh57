@@ -26,16 +26,19 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyNhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.GridViewAdapter;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DoUongDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.GioHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
@@ -69,6 +72,7 @@ public class HomeFragment extends Fragment {
         tv_entry = view.findViewById(R.id.tv_entry);
         listAll = new ArrayList<>();
         dao = new DoUongDAO(getActivity());
+
         if(dao.getLoai("1").size() != 0) {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
             //get nhu
@@ -117,45 +121,51 @@ public class HomeFragment extends Fragment {
         }
 
 
-
+        listAll = (ArrayList<DoUong>) dao.getTop10();
+        adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+        gv.setAdapter(adapter);
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                item = list.get(i);
-                openDialog(getActivity());
+                item = listAll.get(i);
+                if (item.getTrangThai()==1){
+                    openDialog(getActivity());
+                }else {
+                    Toast.makeText(getContext(), "Đồ uống này đã hết, vui lòng chọn đồ uống khác!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btnTea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list = (ArrayList<DoUong>) dao.getLoai("1");
-                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, list);
+                listAll = (ArrayList<DoUong>) dao.getLoai("1");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
         });
         btnCoffee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list = (ArrayList<DoUong>) dao.getLoai("2");
-                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, list);
+                listAll = (ArrayList<DoUong>) dao.getLoai("2");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
         });
         btnSmoothie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list = (ArrayList<DoUong>) dao.getLoai("3");
-                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, list);
+                listAll = (ArrayList<DoUong>) dao.getLoai("3");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
         });
         btnOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list = (ArrayList<DoUong>) dao.getLoai("4");
-                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, list);
+                listAll = (ArrayList<DoUong>) dao.getLoai("4");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
         });
@@ -179,7 +189,8 @@ public class HomeFragment extends Fragment {
         ImageView imgAnh = view.findViewById(R.id.imgAnhChiTiet);
 
         tvTen.setText(item.getTenDoUong());
-        tvGia.setText(item.getGiaTien()+" VND");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+        tvGia.setText(decimalFormat.format(item.getGiaTien())+" VND");
         byte[] hinhAnh = item.getHinhAnh();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
         imgAnh.setImageBitmap(bitmap);
