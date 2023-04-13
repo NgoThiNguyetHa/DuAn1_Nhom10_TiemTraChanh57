@@ -57,7 +57,7 @@ public class QuanLyHoaDonFragment extends Fragment {
         return view;
     }
 
-    private void openDialog() {
+    public void openDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_ds_dat_hang, null);
