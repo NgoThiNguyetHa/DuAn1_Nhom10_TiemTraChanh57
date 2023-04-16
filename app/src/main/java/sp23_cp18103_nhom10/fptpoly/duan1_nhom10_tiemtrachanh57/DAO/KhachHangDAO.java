@@ -85,6 +85,7 @@ public class KhachHangDAO {
         return list.get(0);
         //////
 ///
+        ///
     }
     public KhachHang getKHLast(){
         String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";
