@@ -156,6 +156,10 @@ public class QuanLyNhanVienFragment extends Fragment {
                 }
                 if (validate() > 0) {
                     if (type == 0) {
+//                        if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
+//                            edSDT.setError("Số điện thoại này đã tồn tại");
+//return;
+//                        }
                         if (dao.insertNhanVien(item) > 0) {
                             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         } else {
@@ -195,10 +199,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                 edSDT.setError("Phải là số");
                 check = -1;
             }
-            if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
-                edSDT.setError("Số điện thoại này đã tồn tại");
-                check = -1;
-            }
+
             try {
                 Integer.parseInt(edNamSinh.getText().toString().trim());
                 edNamSinh.setError(null);
