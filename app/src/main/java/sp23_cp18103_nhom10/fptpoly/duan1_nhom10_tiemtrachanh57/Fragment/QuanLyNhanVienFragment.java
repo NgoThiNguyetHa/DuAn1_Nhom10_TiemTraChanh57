@@ -2,6 +2,7 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -76,17 +77,11 @@ public class QuanLyNhanVienFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item = list.get(i);
-                openDialog(getActivity(), 2);
+                openDialog(getActivity(), 1);
                 return false;
             }
         });
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                item = list.get(position);
-                bieuDoDoanhSo(getContext());
-            }
-        });
+
 
         return view;
     }
@@ -113,9 +108,9 @@ public class QuanLyNhanVienFragment extends Fragment {
         edMaNV.setEnabled(false);
 
         if (type != 0) {
-            edSDT.setText(item.getSdt());
+            edSDT.setText(item.getSdt()+"");
             edMaNV.setText(String.valueOf(item.getMaNV()));
-            edNamSinh.setText(item.getNamSinh());
+            edNamSinh.setText(item.getNamSinh()+"");
             edMatKhau.setText(item.getMatKhau());
             edHoTen.setText(item.getHoTen());
             if (item.getGioiTinh() == 1) {
@@ -156,19 +151,22 @@ public class QuanLyNhanVienFragment extends Fragment {
                 }
                 if (validate() > 0) {
                     if (type == 0) {
-//                        if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
-//                            edSDT.setError("Số điện thoại này đã tồn tại");
-//return;
-//                        }
-                        if (dao.insertNhanVien(item) > 0) {
-                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        if(dao.checkSdt(edSDT.getText().toString().trim()) > 0){
+                            edSDT.setError("Số điện thoại này đã tồn tại");
+                            return;
+                        }else {
+                            if (dao.insertNhanVien(item) > 0) {
+                                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                            }
                         }
+
                     } else {
                         item.setMaNV(Integer.parseInt(edMaNV.getText().toString()));
                         if (dao.updateNhanVien(item) > 0) {
                             Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+
                         } else {
                             Toast.makeText(context, "Sửa không thành công", Toast.LENGTH_SHORT).show();
                         }
@@ -176,6 +174,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                     capNhapLv();
                     dialog.dismiss();
                 }
+
             }
 
         });
@@ -216,12 +215,23 @@ public class QuanLyNhanVienFragment extends Fragment {
         return check;
     }
 
-    private void bieuDoDoanhSo(final Context context){
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.layout_doanh_so_fragment);
-        LineChart lineChart = dialog.findViewById(R.id.lineChartDoanhSo);
+    public void bieuDoDoanhSo(final Context context, NhanVien item){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_doanh_so, null);
+        builder.setView(view);
 
-        LineDataSet lineDataSet = new LineDataSet(dataValues(),"");
+        builder.setNegativeButton("HỦY", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        LineChart lineChart = view.findViewById(R.id.lineChartDoanhSo);
+        builder.setTitle("Doanh số của "+item.getHoTen());
+
+        LineDataSet lineDataSet = new LineDataSet(dataValues(item),"Doanh số");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
         LineData data = new LineData(lineDataSet);
@@ -233,13 +243,13 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         lineDataSet.setColors( Color.RED);
         lineDataSet.setValueTextColor(Color.BLACK);
-        lineDataSet.setValueTextSize(18f);
+        lineDataSet.setValueTextSize(10f);
 
-        lineChart.invalidate(); //refesh
+        lineChart.invalidate();
 
-        dialog.show();
+        builder.show();
     }
-    private List<Entry> dataValues() {
+    private List<Entry> dataValues(NhanVien item) {
         ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
         List<DoanhThu> list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(item.getMaNV()));
 
@@ -250,7 +260,7 @@ public class QuanLyNhanVienFragment extends Fragment {
             int thang = list.get(i).getThang();
             int tongTien = list.get(i).getTongTien();
             dataValue.add(new Entry(list.get(i).getThang(), list.get(i).getTongTien()));
-            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
+//            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
         }
 
 

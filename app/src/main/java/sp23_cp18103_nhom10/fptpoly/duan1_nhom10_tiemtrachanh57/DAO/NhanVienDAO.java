@@ -78,6 +78,11 @@ public class NhanVienDAO {
         List<NhanVien> list = getData(sql, sdt);
         return list.get(0);
     }
+    public NhanVien getLogin(String user, String pass){
+        String sql = "select * from NhanVien where sdt=? and matKhau=?";
+        List<NhanVien> list = getData(sql, user, pass);
+        return list.get(0);
+    }
     public int checkLogin(String user, String pass){
         String sql = "select * from NhanVien where sdt=? and matKhau=?";
         List<NhanVien> list = getData(sql, user, pass);

@@ -84,4 +84,9 @@ public class HoaDonDAO {
         return list.get(0);
     }
 
+    public List<HoaDon> getTheoNgay( String tuNgay, String denNgay){
+        String sql = "select * from hoaDon where ngayXuat between ? and ?";
+        return getData(sql, tuNgay, denNgay);
+    }
+
 }
