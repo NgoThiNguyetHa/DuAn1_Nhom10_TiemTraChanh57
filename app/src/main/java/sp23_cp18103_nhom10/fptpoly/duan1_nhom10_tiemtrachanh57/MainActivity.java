@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
                         break;
                     case R.id.nav_BieuDoDoanhThu:
-                        tvTitle.setText("Biểu đồ");
+                        tvTitle.setText("Biểu đồ doanh thu");
                         setTitle("Biểu đồ");
                         BieuDoFragment bieuDoFragment = new BieuDoFragment();
                         manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
