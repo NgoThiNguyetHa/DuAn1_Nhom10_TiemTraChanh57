@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DatDoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
@@ -87,6 +88,11 @@ public class HoaDonDAO {
     public List<HoaDon> getTheoNgay( String tuNgay, String denNgay){
         String sql = "select * from hoaDon where ngayXuat between ? and ?";
         return getData(sql, tuNgay, denNgay);
+    }
+
+    public List<HoaDon> getMaKhachHang(String maKH){
+        String sql = "select * from hoaDon where maKH=?";
+        return getData(sql, maKH);
     }
 
 }

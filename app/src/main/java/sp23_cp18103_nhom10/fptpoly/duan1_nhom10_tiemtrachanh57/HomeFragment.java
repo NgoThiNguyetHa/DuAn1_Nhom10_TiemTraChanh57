@@ -44,7 +44,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.GioHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
 
-
+//Home fragment
 public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     DoUongDAO dao;
