@@ -22,6 +22,7 @@ public class KhachHangDAO {
         db = dbHelper.getWritableDatabase();
     }
 
+
     public long insertKhachHang(KhachHang obj){
         ContentValues values = new ContentValues();
         values.put("hoTen", obj.getHoTen());
@@ -70,15 +71,21 @@ public class KhachHangDAO {
     }
 
     public List<KhachHang> getAll(){
-        String sql = "select * from khachHang";
+        String sql = "SELECT khachHang.maKH as maKH, khachHang.hoTen as hoTen, khachHang.sdt as sdt, khachHang.namSinh as namSinh, khachHang.gioiTinh as gioiTinh\n" +
+                " FROM khachHang JOIN hoaDon on khachHang.maKH = hoaDon.maKH\n" +
+                " GROUP by khachHang.maKH\n" +
+                " ORDER by sum(hoaDon.tongTien) DESC";
         return getData(sql);
     }
+
 
     public KhachHang getID(String id){
         String sql = "select * from khachHang where maKH=?";
         List<KhachHang> list = getData(sql,id);
         return list.get(0);
-
+        //////
+///
+        ///
     }
     public KhachHang getKHLast(){
         String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";

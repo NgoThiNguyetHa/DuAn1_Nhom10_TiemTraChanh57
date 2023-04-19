@@ -23,6 +23,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhThuFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
@@ -30,6 +31,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 public class AdapterQuanLyHoaDon extends ArrayAdapter {
     private Context context;
     QuanLyHoaDonFragment fragment;
+    DoanhThuFragment doanhThuFragment;
     private ArrayList<HoaDon> list;
     TextView tvMaHD , tvNhanVien , tvKhachHang , tvTongTien , tvNgayXuat , tvTrangThai;
     ImageView img;
@@ -38,6 +40,12 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
         this.context = context;
         this.list =list;
         this.fragment = fragment;
+    }
+    public AdapterQuanLyHoaDon(@NonNull Context context, DoanhThuFragment fragment, ArrayList<HoaDon> list) {
+        super(context, 0 , list);
+        this.context = context;
+        this.list =list;
+        this.doanhThuFragment = fragment;
     }
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     @NonNull

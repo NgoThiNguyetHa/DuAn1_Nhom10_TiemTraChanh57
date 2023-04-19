@@ -2,6 +2,7 @@ package sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +15,27 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterDSDatHang;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterHoaDonKhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyKhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyNhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DatDoUongDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.HoaDonDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.KhachHangDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DatDoUong;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
@@ -178,10 +187,40 @@ public class QuanLyKhachHangFragment extends Fragment {
             }
             if(!rdoNamKH.isChecked() && !rdoNuKH.isChecked()){
                 Toast.makeText(getContext(), "Vui lòng chọn giới tính", Toast.LENGTH_SHORT).show();
-                return check = -1;
+                check = -1;
             }
         }
         return check;
+    }
+
+    public void dialogHoaDon(final Context context, KhachHang item){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_hoa_don_khach_hang, null);
+        builder.setView(view);
+
+        ListView lvHD = view.findViewById(R.id.lvHoaDonKH);
+        TextView tvThanhTien = view.findViewById(R.id.tvThanhTien);
+
+        HoaDonDAO hoaDonDAO = new HoaDonDAO(getActivity());
+        ArrayList<HoaDon> listHD = (ArrayList<HoaDon>) hoaDonDAO.getMaKhachHang(String.valueOf(item.getMaKH()));
+        AdapterHoaDonKhachHang adapterHoaDonKhachHang = new AdapterHoaDonKhachHang(getActivity(), listHD);
+        lvHD.setAdapter(adapterHoaDonKhachHang);
+
+        int thanhTien = 0;
+        for (int i=0; i<listHD.size(); i++){
+            thanhTien+=listHD.get(i).getTongTien();
+        }
+        tvThanhTien.setText(thanhTien+" VND");
+
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+
     }
 }
 
