@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable-v24/categories_backround2.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable-v24/categories_backround3.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable-v24/categories_backround4.xml" value="0.1" />
@@ -14,10 +13,15 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_baseline_phone_in_talk_24.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_cart.xml" value="0.169" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_chart.xml" value="0.1" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_edit.xml" value="0.1" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_folder_upload.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_home.xml" value="0.241" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_list.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/ic_menu.xml" value="0.223" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/item_backround.xml" value="0.1565" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/drawable/popular_backround.xml" value="0.103" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/activity_main.xml" value="0.136" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/activity_main2.xml" value="0.2" />
@@ -26,6 +30,7 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_chi_tiet_do_uong.xml" value="0.152" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_doanh_so.xml" value="0.17889492753623187" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_ds_dat_hang.xml" value="0.2" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_hoa_don_khach_hang.xml" value="0.25" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_khachhang.xml" value="0.264" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_sua_khachhang.xml" value="0.25" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/dialog_them_do_uong.xml" value="0.176" />
@@ -47,6 +52,7 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_ds_dat_hang.xml" value="0.24456521739130435" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_grid_view.xml" value="0.2" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_hoa_don.xml" value="0.22780797101449277" />
+        <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_hoa_don_khach_hang.xml" value="0.264" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_khachhang.xml" value="0.2" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_loai.xml" value="0.6" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/layout_item_them_nhan_vien.xml" value="0.2" />
@@ -56,6 +62,23 @@
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/tea_fragment.xml" value="0.1" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/layout/toolbar.xml" value="0.24087591240875914" />
         <entry key="..\:/DuAn1_Nhom10_TiemTraChanh57/app/src/main/res/menu/drawer_menu.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable/add_backround.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_account.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_phone_in_talk_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_bieudo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_chart.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_dangxuat.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_folder_upload.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_image.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_kh.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.26036071777343756" />
         <entry key="app/src/main/res/layout/activity_manhinhchao.xml" value="0.1" />
@@ -76,7 +99,6 @@
         <entry key="app/src/main/res/layout/layout_nav.xml" value="0.1" />
         <entry key="app/src/main/res/layout/quanlykhachhang.xml" value="0.10371376811594203" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
-
       </map>
     </option>
   </component>

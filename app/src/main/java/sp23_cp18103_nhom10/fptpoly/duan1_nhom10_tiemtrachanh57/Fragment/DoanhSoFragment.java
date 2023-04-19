@@ -34,7 +34,7 @@ public class DoanhSoFragment extends Fragment  {
     LineChart lineChart;
     ArrayList<DoanhThu> list;
     @Nullable
-
+// doanh số
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_doanh_so_fragment, container, false);
         lineChart = view.findViewById(R.id.lineChartDoanhSo);

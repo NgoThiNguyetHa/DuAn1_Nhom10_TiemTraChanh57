@@ -34,7 +34,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoiMatKh
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.Top10Fragment;
-
+//Main
 public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
                         break;
                     case R.id.nav_BieuDoDoanhThu:
-                        tvTitle.setText("Biểu đồ");
+                        tvTitle.setText("Biểu đồ doanh thu");
                         setTitle("Biểu đồ");
                         BieuDoFragment bieuDoFragment = new BieuDoFragment();
                         manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
