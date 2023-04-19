@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="15dp">
+        android:layout_margin="10dp">
         <Button
             android:id="@+id/btnLuuKhachHang"
             android:layout_width="wrap_content"
@@ -85,14 +85,15 @@
             android:layout_weight="1"
             android:backgroundTint="#F89B4A"
             android:textColor="@color/black"/>
+
         <Button
             android:id="@+id/btnHuyKhachHang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kiểm tra"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:backgroundTint="#F89B4A"
-            android:textColor="@color/black"/>
+            android:text="Kiểm tra"
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>
