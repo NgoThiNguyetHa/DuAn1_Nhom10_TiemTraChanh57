@@ -83,7 +83,7 @@
             android:text="Lưu"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:background="#FFCC3E"
+            android:backgroundTint="#FFCC3E"
             android:textColor="@color/black" />
         <Button
             android:id="@+id/btnHuyDMK"
@@ -92,7 +92,7 @@
             android:text="Hủy"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:background="#FFCC3E"
+            android:backgroundTint="#FFCC3E"
             android:textColor="@color/black" />
     </LinearLayout>
 
