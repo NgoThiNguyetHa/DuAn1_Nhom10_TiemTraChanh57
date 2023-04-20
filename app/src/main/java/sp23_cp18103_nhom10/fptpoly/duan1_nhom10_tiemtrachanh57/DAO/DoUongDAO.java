@@ -86,4 +86,12 @@ public class DoUongDAO {
         List<DoUong> list = getData(sql, maLoai);
         return list;
     }
+
+    public List<DoUong> getTop10(){
+        String sql = "select doUong.maDoUong, doUong.tenDoUong, doUong.maLoai, doUong.giaTien, doUong.trangThai, doUong.hinhAnh, sum(datDoUong.soLuong) as SL " +
+                "from doUong join datDoUong on doUong.maDoUong= datDoUong.maDoUong\n" +
+                " group by doUong.maDoUong order by sum(datDoUong.soLuong) desc limit 10";
+        List<DoUong> list = getData(sql, null);
+        return list;
+    }
 }

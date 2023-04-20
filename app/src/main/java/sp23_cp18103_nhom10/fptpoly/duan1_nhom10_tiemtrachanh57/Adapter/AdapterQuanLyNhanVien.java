@@ -11,6 +11,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 
@@ -24,7 +31,7 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
     QuanLyNhanVienFragment fragment;
     private ArrayList<NhanVien> list;
     TextView tvHoTen , tvSDT , tvNamSinh , tvGioiTinh , tvMaNV , tvTrangThai;
-    ImageView img;
+    ImageView imgChart;
     public AdapterQuanLyNhanVien(@NonNull Context context, QuanLyNhanVienFragment fragment, ArrayList<NhanVien> list) {
         super(context, 0 , list);
         this.context = context;
@@ -41,7 +48,7 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
             view = inflater.inflate(R.layout.layout_item_them_nhan_vien, null);
         }
         final NhanVien item = list.get(position);
-        if(view!= null){
+        if(view != null){
             NhanVienDAO nhanVienDAO = new NhanVienDAO(context);
             NhanVien nhanVien = nhanVienDAO.getID(String.valueOf(item.getMaNV()));
 
@@ -52,6 +59,7 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
             tvGioiTinh = view.findViewById(R.id.tvGioiTinh);
             tvMaNV = view.findViewById(R.id.tvMaNV);
             tvTrangThai = view.findViewById(R.id.tvTrangThai);
+            imgChart = view.findViewById(R.id.imgChart);
 
             tvHoTen.setText("Họ tên : " + item.getHoTen());
             tvSDT.setText("Số điện thoại : " + item.getSdt());
@@ -71,6 +79,15 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
             }else{
                 tvGioiTinh.setText("Giới tính : Nữ " );
             }
+
+            imgChart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    fragment.bieuDoDoanhSo(getContext(), item);
+
+                }
+            });
 
         }
 

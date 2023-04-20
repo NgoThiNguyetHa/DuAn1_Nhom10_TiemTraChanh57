@@ -17,6 +17,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.KhachHangDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
@@ -26,7 +27,7 @@ public class AdapterQuanLyKhachHang extends ArrayAdapter {
     QuanLyKhachHangFragment fragment;
     private ArrayList<KhachHang> list;
     TextView tvMaKhachHang, tvHoTenKhachHang, tvSDTKhachHang, tvNamSinhKhachHang, tvGioiTinhKhachHang;
-    ImageView img;
+    ImageView imgList;
 
 
     public AdapterQuanLyKhachHang(@NonNull Context context, QuanLyKhachHangFragment fragment, ArrayList<KhachHang> list) {
@@ -54,6 +55,7 @@ public class AdapterQuanLyKhachHang extends ArrayAdapter {
             tvSDTKhachHang = view.findViewById(R.id.tvSDTKhachHang);
             tvNamSinhKhachHang = view.findViewById(R.id.tvNamSinhKhachHang);
             tvGioiTinhKhachHang = view.findViewById(R.id.tvGioiTinhKhachHang);
+            imgList = view.findViewById(R.id.imgList);
 
             tvMaKhachHang.setText("Mã KH: "+item.getMaKH());
             tvHoTenKhachHang.setText("Họ tên: "+item.getHoTen());
@@ -62,10 +64,17 @@ public class AdapterQuanLyKhachHang extends ArrayAdapter {
             tvGioiTinhKhachHang.setText("Giới tính: "+item.getGioiTinh());
 
             if(item.getGioiTinh() == 1){
-                tvGioiTinhKhachHang.setText("Giới tính : Nam " );
+                tvGioiTinhKhachHang.setText("Giới tính: Nam " );
             }else{
-                tvGioiTinhKhachHang.setText("Giới tính : Nữ " );
+                tvGioiTinhKhachHang.setText("Giới tính: Nữ " );
             }
+
+            imgList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragment.dialogHoaDon(getContext(), item);
+                }
+            });
 
         }
         return view;

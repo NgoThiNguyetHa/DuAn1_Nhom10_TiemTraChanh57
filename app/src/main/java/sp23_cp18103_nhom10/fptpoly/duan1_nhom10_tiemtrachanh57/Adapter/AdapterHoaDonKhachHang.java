@@ -5,34 +5,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DoUongDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.KhachHangDAO;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DatDoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
-import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyKhachHangFragment;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 
-public class AdapterDSDatHang extends ArrayAdapter {
+public class AdapterHoaDonKhachHang extends ArrayAdapter {
     private Context context;
-    private ArrayList<DatDoUong> list;
-    TextView tvTenDoUong, tvSoLuong, tvGiaTien, tvTongTien;
+    private ArrayList<HoaDon> list;
+    TextView tvMaHD, tvTenNhanVien, tvNgayXuat, tvTongTien;
 
 
 
-    public AdapterDSDatHang(@NonNull Context context, ArrayList<DatDoUong> list) {
+    public AdapterHoaDonKhachHang(@NonNull Context context, ArrayList<HoaDon> list) {
         super(context, 0, list);
         this.context = context;
         this.list = list;
     }
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     @NonNull
     @Override
@@ -40,27 +44,28 @@ public class AdapterDSDatHang extends ArrayAdapter {
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_item_ds_dat_hang,null);
+            view = inflater.inflate(R.layout.layout_item_hoa_don_khach_hang,null);
 
         }
-        final DatDoUong item = list.get(position);
+        final HoaDon item = list.get(position);
 
         if(view != null){
 
-            tvTenDoUong = view.findViewById(R.id.tvTenDoUong);
-            tvSoLuong = view.findViewById(R.id.tvSoLuong);
-            tvGiaTien = view.findViewById(R.id.tvGiaTien);
+            tvMaHD = view.findViewById(R.id.tvMaHD);
+            tvTenNhanVien = view.findViewById(R.id.tvTenNhanVien);
+            tvNgayXuat = view.findViewById(R.id.tvNgayXuat);
             tvTongTien = view.findViewById(R.id.tvTongTien);
 
-            DoUongDAO doUongDAO = new DoUongDAO(context);
-            DoUong doUong = doUongDAO.getID(String.valueOf(item.getMaDoUong()));
-            tvTenDoUong.setText(""+doUong.getTenDoUong());
+            tvMaHD.setText(item.getMaHD()+"");
+
+            NhanVienDAO nhanVienDAO = new NhanVienDAO(context);
+            NhanVien nv = nhanVienDAO.getID(String.valueOf(item.getMaNV()));
+            tvTenNhanVien.setText(nv.getHoTen());
 
             DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
-            tvSoLuong.setText(""+item.getSoLuong());
-            tvGiaTien.setText(""+decimalFormat.format(doUong.getGiaTien()));
             tvTongTien.setText(""+decimalFormat.format(item.getTongTien()));
 
+            tvNgayXuat.setText(sdf.format(item.getNgayXuat()));
 
         }
         return view;

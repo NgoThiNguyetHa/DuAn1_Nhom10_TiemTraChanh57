@@ -7,7 +7,7 @@
     <ListView
         android:id="@+id/lvNhanVien"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNhanVien"
@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
         android:layout_margin="25dp"
-        android:background="#F89B4A"
+        android:backgroundTint="#F89B4A"
         android:src="@drawable/ic_add"/>
 </FrameLayout>

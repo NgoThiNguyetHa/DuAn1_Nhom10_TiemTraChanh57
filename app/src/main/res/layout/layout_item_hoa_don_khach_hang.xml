@@ -4,26 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/tvTenDoUong"
+        android:id="@+id/tvMaHD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="tenDoUong"
-        android:layout_weight="2.5"
+        android:text="MaHD"
+        android:layout_weight="1"
         android:textColor="@color/black"/>
     <TextView
-        android:id="@+id/tvSoLuong"
+        android:id="@+id/tvTenNhanVien"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="số lượng"
-        android:layout_weight="0.5"
+        android:text="NhanVien"
+        android:layout_weight="2"
         android:gravity="center"
         android:textColor="@color/black"/>
     <TextView
-        android:id="@+id/tvGiaTien"
+        android:id="@+id/tvNgayXuat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="giaTien"
-        android:layout_weight="1"
+        android:text="NgayXuat"
+        android:layout_weight="2"
         android:gravity="center"
         android:textColor="@color/black"/>
     <TextView

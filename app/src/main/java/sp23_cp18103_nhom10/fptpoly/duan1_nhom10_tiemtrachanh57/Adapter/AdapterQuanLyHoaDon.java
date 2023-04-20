@@ -23,6 +23,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.DoanhThuFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyHoaDonFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.QuanLyNhanVienFragment;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
@@ -30,6 +31,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 public class AdapterQuanLyHoaDon extends ArrayAdapter {
     private Context context;
     QuanLyHoaDonFragment fragment;
+    DoanhThuFragment doanhThuFragment;
     private ArrayList<HoaDon> list;
     TextView tvMaHD , tvNhanVien , tvKhachHang , tvTongTien , tvNgayXuat , tvTrangThai;
     ImageView img;
@@ -39,7 +41,13 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
         this.list =list;
         this.fragment = fragment;
     }
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public AdapterQuanLyHoaDon(@NonNull Context context, DoanhThuFragment fragment, ArrayList<HoaDon> list) {
+        super(context, 0 , list);
+        this.context = context;
+        this.list =list;
+        this.doanhThuFragment = fragment;
+    }
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -69,7 +77,7 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
 
             tvTongTien.setText("Tổng tiền: " + item.getTongTien()+" VND");
 
-            tvNgayXuat.setText("Ngày xuất: " + item.getNgayXuat());
+            tvNgayXuat.setText("Ngày xuất: " + sdf.format(item.getNgayXuat()) );
 
             if(item.getTrangThai() == 1){
                 tvTrangThai.setText("Đã thanh toán");

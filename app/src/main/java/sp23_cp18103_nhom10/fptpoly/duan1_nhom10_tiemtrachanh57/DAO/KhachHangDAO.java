@@ -11,6 +11,7 @@ import java.util.List;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.KhachHang;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DbHelper.DbHelper;
 
 public class KhachHangDAO {
@@ -20,6 +21,7 @@ public class KhachHangDAO {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
+
 
     public long insertKhachHang(KhachHang obj){
         ContentValues values = new ContentValues();
@@ -69,19 +71,38 @@ public class KhachHangDAO {
     }
 
     public List<KhachHang> getAll(){
-        String sql = "select * from khachHang";
+        String sql = "SELECT khachHang.maKH as maKH, khachHang.hoTen as hoTen, khachHang.sdt as sdt, khachHang.namSinh as namSinh, khachHang.gioiTinh as gioiTinh\n" +
+                " FROM khachHang JOIN hoaDon on khachHang.maKH = hoaDon.maKH\n" +
+                " GROUP by khachHang.maKH\n" +
+                " ORDER by sum(hoaDon.tongTien) DESC";
         return getData(sql);
     }
+
 
     public KhachHang getID(String id){
         String sql = "select * from khachHang where maKH=?";
         List<KhachHang> list = getData(sql,id);
         return list.get(0);
-
+        //////
+///
+        ///
     }
     public KhachHang getKHLast(){
         String sql = "SELECT * FROM khachHang ORDER BY maKH DESC LIMIT 1";
         List<KhachHang> list = getData(sql);
+        return list.get(0);
+    }
+    public int checkSdt(String Sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql, Sdt);
+        if(list.size() == 0){
+            return -1;
+        }
+        return 1;
+    }
+    public KhachHang getSDT(String sdt){
+        String sql = "select * from khachHang where sdt=?";
+        List<KhachHang> list = getData(sql,sdt);
         return list.get(0);
     }
 }
