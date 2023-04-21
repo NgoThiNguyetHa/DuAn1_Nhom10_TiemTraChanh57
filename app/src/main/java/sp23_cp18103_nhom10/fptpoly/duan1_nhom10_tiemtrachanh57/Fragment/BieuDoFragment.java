@@ -35,6 +35,7 @@ public class BieuDoFragment extends Fragment  {
     ArrayList<DoanhThu> list;
     @Nullable
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_bieu_do_fragment, container, false);
         lineChart = view.findViewById(R.id.lineChart);
