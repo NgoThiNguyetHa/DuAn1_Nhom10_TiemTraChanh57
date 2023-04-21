@@ -106,13 +106,15 @@ public class GioHangFragment extends Fragment {
 
 
         if (HomeFragment.listGioHang.size() >0){
-            //hiện dialog để thêm khách hàng
-            openDialog(getContext());
 
-
-
+            if (!chkThanhToan.isChecked()){
+                Toast.makeText(getContext(), "Chưa thanh toán", Toast.LENGTH_SHORT).show();
+            }else {
+                //hiện dialog để thêm khách hàng
+                openDialog(getContext());
+            }
         }else {
-            Toast.makeText(getContext(), "Giỏ hàng của bạn chưa có sản phâm", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Giỏ hàng của bạn chưa có sản phẩm", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -219,8 +221,10 @@ public class GioHangFragment extends Fragment {
                         }
                         //insertHD
                         insertHD_DaCoKH();
+                        chkThanhToan.setChecked(false);
                     }else{
                         insertHD_ChuaCoKH();
+                        chkThanhToan.setChecked(false);
                     }
 
                     dialog.dismiss();

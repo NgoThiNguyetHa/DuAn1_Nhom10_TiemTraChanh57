@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,6 +16,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -33,18 +36,24 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import me.relex.circleindicator.CircleIndicator;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterQuanLyNhanVien;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.GridViewAdapter;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.adapterSideshow;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.DoUongDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.NhanVienDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DAO.ThongKeDAO;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.DoUong;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.GioHang;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.NhanVien;
+import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.sideshow;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Fragment.GioHangFragment;
 
-//Home fragment
+
 public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     DoUongDAO dao;
@@ -55,6 +64,12 @@ public class HomeFragment extends Fragment {
     TextInputEditText edTimKiem;
     TextView tv_entry;
     DoUong item;
+
+    ViewPager viewPager;
+    List<sideshow> list_sideshow;
+    CircleIndicator circleIndicator;
+    sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.adapterSideshow adapterSideshow;
+    Timer timer;
 
     public static ArrayList<GioHang> listGioHang;
 
@@ -72,6 +87,17 @@ public class HomeFragment extends Fragment {
         tv_entry = view.findViewById(R.id.tv_entry);
         listAll = new ArrayList<>();
         dao = new DoUongDAO(getActivity());
+
+        //sideshow
+        viewPager = view.findViewById(R.id.pager_sideshow);
+        circleIndicator = view.findViewById(R.id.indicator_img);
+        list_sideshow  = getListSideShow();
+        adapterSideshow = new adapterSideshow(getContext(),list_sideshow);
+        viewPager.setAdapter(adapterSideshow);
+        circleIndicator.setViewPager(viewPager);
+        adapterSideshow.registerDataSetObserver(circleIndicator.getDataSetObserver());
+        auto_sideshow();
+        //end sideshow
 
         if(dao.getLoai("1").size() != 0) {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
@@ -169,11 +195,53 @@ public class HomeFragment extends Fragment {
                 gv.setAdapter(adapter);
             }
         });
-
-
-
         return view;
     }
+
+    private List<sideshow> getListSideShow() {
+        List<sideshow> list = new ArrayList<>();
+        list.add(new sideshow(R.drawable.img_banner1));
+        list.add(new sideshow(R.drawable.img_banner2));
+        list.add(new sideshow(R.drawable.img_banner3));
+        return list;
+    }
+    //hàm chạy auto
+    private void auto_sideshow() {
+        if (list_sideshow ==null || list_sideshow.isEmpty() || viewPager == null){
+            return;
+        }
+        if (timer == null){
+            timer = new Timer();
+        }
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        int curentItem = viewPager.getCurrentItem();
+                        int totalItem = list_sideshow.size()-1;
+                        if (curentItem < totalItem){
+                            curentItem++;
+                            viewPager.setCurrentItem(curentItem);
+                        }else {
+                            viewPager.setCurrentItem(0);
+                        }
+                    }
+                });
+            }
+        },500,2500);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (timer!= null){
+            timer.cancel();
+            timer = null;
+        }
+    }
+    //end hàm sideshow
 
     public void openDialog(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -184,8 +252,8 @@ public class HomeFragment extends Fragment {
         TextView tvTen = view.findViewById(R.id.tvTenDoUongChiTiet);
         TextView tvGia = view.findViewById(R.id.tvGiaChiTiet);
         TextView tvSoLuong = view.findViewById(R.id.tvSoLuong);
-        Button btnCong = view.findViewById(R.id.btnCongSL);
-        Button btnTru = view.findViewById(R.id.btnTruSL);
+        TextView btnCong = view.findViewById(R.id.btnCongSL);
+        TextView btnTru = view.findViewById(R.id.btnTruSL);
         ImageView imgAnh = view.findViewById(R.id.imgAnhChiTiet);
 
         tvTen.setText(item.getTenDoUong());

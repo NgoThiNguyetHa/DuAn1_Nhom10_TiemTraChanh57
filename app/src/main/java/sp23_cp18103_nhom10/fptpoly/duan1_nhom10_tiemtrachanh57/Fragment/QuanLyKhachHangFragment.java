@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterDSDatHang;
@@ -211,7 +212,9 @@ public class QuanLyKhachHangFragment extends Fragment {
         for (int i=0; i<listHD.size(); i++){
             thanhTien+=listHD.get(i).getTongTien();
         }
-        tvThanhTien.setText(thanhTien+" VND");
+
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+        tvThanhTien.setText(decimalFormat.format(thanhTien)+" VND");
 
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override

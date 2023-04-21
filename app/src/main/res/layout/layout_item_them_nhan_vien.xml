@@ -7,7 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp"
         android:layout_margin="10dp"
         android:background="@drawable/item_backround">
 
@@ -23,7 +26,8 @@
                 android:text="maNV"
                 android:layout_weight="5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
             <ImageView
                 android:id="@+id/imgChart"
                 android:src="@drawable/ic_chart"
@@ -45,7 +49,8 @@
             android:textSize="20dp"
             android:text="SDT"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,14 +62,16 @@
                 android:text="hoten"
                 android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/tvTrangThai"
                 android:textSize="20dp"
                 android:text="TrangThai"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
         <LinearLayout
@@ -79,14 +86,16 @@
                 android:text="NamSinh"
                 android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/tvGioiTinh"
                 android:textSize="20dp"
                 android:text="GioiTinh"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
     </LinearLayout>

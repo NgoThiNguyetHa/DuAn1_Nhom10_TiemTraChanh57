@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.Adapter.AdapterDSDatHang;
@@ -70,7 +71,8 @@ public class QuanLyHoaDonFragment extends Fragment {
         adapterDSDatHang = new AdapterDSDatHang(getActivity(), listDatDoUong);
         lv.setAdapter(adapterDSDatHang);
 
-        tvThanhTien.setText(item.getTongTien()+" VND");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+        tvThanhTien.setText(decimalFormat.format(item.getTongTien())+" VND");
 
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override

@@ -15,13 +15,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:text="Đồ Uống"/>
+            android:text="Đồ Uống"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/tvSL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textStyle="bold"
-            android:text="SL"/>
+            android:text="SL"
+            android:textColor="@color/black"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

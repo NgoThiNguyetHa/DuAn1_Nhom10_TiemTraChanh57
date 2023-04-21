@@ -8,34 +8,43 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/item_backround">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/item_backround"
+        >
         <TextView
             android:id="@+id/tvMaHD"
             android:textSize="20dp"
             android:text="maHD"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/tvNhanVien"
             android:textSize="20dp"
             android:text="Tên nhân viên"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tvKhachHang"
             android:textSize="20dp"
             android:text="tên KH"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/tvNgayXuat"
             android:textSize="20dp"
             android:text="Ngày xuất"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
 
 
         <TextView
@@ -43,13 +52,16 @@
             android:textSize="20dp"
             android:text="Tổng tiền"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/tvTrangThai"
             android:textSize="20dp"
             android:text="Trạng thái"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

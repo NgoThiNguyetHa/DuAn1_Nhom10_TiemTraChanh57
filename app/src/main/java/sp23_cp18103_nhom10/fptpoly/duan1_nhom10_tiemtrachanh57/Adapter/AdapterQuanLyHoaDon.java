@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,7 +76,8 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
             KhachHang kh = khachHangDAO.getID(String.valueOf(item.getMaKH()));
             tvKhachHang.setText("Tên khách hàng: " + kh.getHoTen());
 
-            tvTongTien.setText("Tổng tiền: " + item.getTongTien()+" VND");
+            DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+            tvTongTien.setText("Tổng tiền: " + decimalFormat.format(item.getTongTien())+" VND");
 
             tvNgayXuat.setText("Ngày xuất: " + sdf.format(item.getNgayXuat()) );
 

@@ -24,12 +24,12 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             app:startIconDrawable="@drawable/ic_baseline_phone_in_talk_24"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edSDT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFCC3E"
                 android:hint="Số điện thoại"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,12 +42,12 @@
         android:layout_marginTop="30dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:endIconMode="password_toggle"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPasswordT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFCC3E"
             android:hint="Mật khẩu"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,10 +61,11 @@
 
     <Button
         android:id="@+id/btnDangNhap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:backgroundTint="#FFCC3E"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
         android:text="Đăng nhập"
         android:textColor="@color/black"
         android:textStyle="bold"

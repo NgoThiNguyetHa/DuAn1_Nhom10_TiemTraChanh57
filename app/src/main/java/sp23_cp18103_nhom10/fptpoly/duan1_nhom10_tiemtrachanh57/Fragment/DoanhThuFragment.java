@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,7 +35,7 @@ import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.DTO.HoaDon;
 import sp23_cp18103_nhom10.fptpoly.duan1_nhom10_tiemtrachanh57.R;
 //doanh thu
 public class DoanhThuFragment extends Fragment {
-    Button btnTuNgay, btnDenNgay, btnDoanhThu;
+    Button btnDoanhThu;
     EditText edTuNgay, edDenNgay;
     TextView tvDoanhThu;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,14 +45,13 @@ public class DoanhThuFragment extends Fragment {
     ArrayList<HoaDon> list;
 
     HoaDon item;
+    DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_doanh_thu, container, false);
         edTuNgay = view.findViewById(R.id.edTuNgay);
         edDenNgay = view.findViewById(R.id.edDenNgay);
         tvDoanhThu = view.findViewById(R.id.tvDoanhThu);
-        btnTuNgay = view.findViewById(R.id.btnTuNgay);
-        btnDenNgay = view.findViewById(R.id.btnDenNgay);
         btnDoanhThu = view.findViewById(R.id.btnDoanhThu);
         lv = view.findViewById(R.id.lvHoaDon_DT);
 
@@ -78,7 +78,7 @@ public class DoanhThuFragment extends Fragment {
         };
 
 
-        btnTuNgay.setOnClickListener(new View.OnClickListener() {
+        edTuNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar c = Calendar.getInstance();
@@ -90,7 +90,7 @@ public class DoanhThuFragment extends Fragment {
             }
         });
 
-        btnDenNgay.setOnClickListener(new View.OnClickListener() {
+        edDenNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar c = Calendar.getInstance();
@@ -108,7 +108,7 @@ public class DoanhThuFragment extends Fragment {
                 String tuNgay = edTuNgay.getText().toString();
                 String denNgay = edDenNgay.getText().toString();
                 ThongKeDAO thongKeDao = new ThongKeDAO(getActivity());
-                tvDoanhThu.setText( "Doanh thu: "+thongKeDao.getDoanhThu(tuNgay, denNgay) +" VNĐ");
+                tvDoanhThu.setText( "Doanh thu: "+ decimalFormat.format(thongKeDao.getDoanhThu(tuNgay, denNgay))+" VNĐ");
                 Log.d("TAG", "onClick: "+tuNgay+" "+ denNgay);
 
                 HoaDonDAO dao = new HoaDonDAO(getActivity());
@@ -139,7 +139,7 @@ public class DoanhThuFragment extends Fragment {
         AdapterDSDatHang adapterDSDatHang = new AdapterDSDatHang(getActivity(), listDatDoUong);
         lv.setAdapter(adapterDSDatHang);
 
-        tvThanhTien.setText(item.getTongTien()+" VND");
+        tvThanhTien.setText(decimalFormat.format(item.getTongTien())+" VND");
 
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override

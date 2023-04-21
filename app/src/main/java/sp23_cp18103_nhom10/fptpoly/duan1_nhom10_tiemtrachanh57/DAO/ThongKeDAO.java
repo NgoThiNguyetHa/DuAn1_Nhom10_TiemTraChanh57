@@ -93,7 +93,8 @@ public class ThongKeDAO {
 
     @SuppressLint("Range")
     public List<Top10> getTop10TheoThang(String thang){
-        String sqlTop = "SELECT datDoUong.maDoUong as doUongTheoThang,sum(datDoUong.soLuong) as Top10TheoThang from datDoUong join hoaDon on datDoUong.maHD = hoaDon.maHD WHERE strftime('%m', hoaDon.ngayXuat)=? GROUP by datDoUong.maDoUong ORDER by datDoUong.soLuong DESC LIMIT 10";
+        String sqlTop = "SELECT datDoUong.maDoUong as doUongTheoThang,sum(datDoUong.soLuong) as Top10TheoThang from datDoUong join hoaDon on datDoUong.maHD = hoaDon.maHD " +
+                "WHERE strftime('%m', hoaDon.ngayXuat)=? GROUP by datDoUong.maDoUong ORDER by datDoUong.soLuong DESC LIMIT 10";
         List<Top10> list = new ArrayList<>();
         DoUongDAO doUongDAO = new DoUongDAO(context);
         Cursor c = db.rawQuery(sqlTop,new String[]{thang});

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ public class Top10Fragment extends Fragment {
     ArrayList<Top10> list, list2;
     AdapterTop10 adapterTop10;
     EditText edThangTim;
-    Button btnSearch;
+    ImageView imgSearch;
     ThongKeDAO dao;
 
     @Nullable
@@ -39,9 +40,9 @@ public class Top10Fragment extends Fragment {
 
 
         edThangTim = view.findViewById(R.id.edThangTim);
-        btnSearch = view.findViewById(R.id.btnSearch);
+        imgSearch = view.findViewById(R.id.img_sreach);
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -37,7 +37,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Welcome to Chanh Tea Shop 57!"
+                        android:text="Welcome to Lemon Tea Shop 57!"
                         android:textColor="#FF9800"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,9 @@
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                app:startIconDrawable="@drawable/ic_search">
+                app:startIconDrawable="@drawable/ic_search"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edTimKiem"
@@ -79,18 +81,30 @@
                     android:hint="Find your drink" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:src="@drawable/img_banner" />-->
+            <androidx.viewpager.widget.ViewPager
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:id="@+id/pager_sideshow"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="160dp"
+                />
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator_img"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/img_banner" />
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="Categories"
                 android:textColor="@color/black"

@@ -33,7 +33,8 @@
             android:id="@+id/edSDT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="SĐT"/>
+            android:hint="SĐT"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -45,7 +46,8 @@
             android:id="@+id/edNamSinh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Năm sinh" />
+            android:hint="Năm sinh"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
     <RadioGroup
         android:id="@+id/rdgGioiTinh"
