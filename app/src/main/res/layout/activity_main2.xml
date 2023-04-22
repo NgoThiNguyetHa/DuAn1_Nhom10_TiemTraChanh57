@@ -234,7 +234,7 @@
             <GridView
                 android:id="@+id/gvPopular"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="1000dp"
                 android:orientation="horizontal"
                 android:horizontalSpacing="20dp"
                 android:verticalSpacing="20dp"
